@@ -1,0 +1,86 @@
+<!DOCTYPE html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Summer Course '25, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2025, BEST Summer Course Skopje, Skopje" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>BEST Course in Summer 2026</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html", function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop().split(".html")[0];
+                $("#" + page).addClass("active");
+            });
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <div class="container-fluid bg-white px-0">
+
+
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+            </div>
+
+            <div class="carousel-inner" style="height: auto;">
+                <div id="carousel-item" class="carousel-item active">
+                    <div class="row">
+                        <img src="./images/20871950176_42c41c40ec_b.jpg" class="d-block w-100 opacity-50" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        </div>
+                    </div>
+                </div>
+                <div id="carousel-item" class="carousel-item">
+                    <img src="./images/35598891490_84ea2dcf5b_b.jpg" class="d-block w-100 opacity-50" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                    </div>
+                </div>
+                <div id="carousel-item" class="carousel-item">
+                    <img src="./images/51968947624_bacf9bbaa9_b.jpg" class="d-block img-fluid opacity-50 w-100"
+                        alt="...">
+                </div>
+            </div>
+        </div>
+
+        <!--Course title and description section-->
+        <div class="orange-text text-center my-5 mx-0 row justify-content-center">
+            <h2>Click More, Think Less: Say Yes to UI/UX</h2>
+        </div>
+
+        <div class="h5 text-dark text-center mx-5">
+            <p style="font-size: 1.25rem;">
+                Some apps feel effortless, addictive, and strangely satisfying - while others make you want to delete them after 10 seconds. We use digital products every day, yet most people have no idea why certain apps feel amazing to use and others feel painful. What makes an app intuitive? Why do some designs just click? Is it talent, psychology, design rules or a bit of magic?
+<br><br>
+Join us as we dive into the world of UX/UI design, psychology, user behavior, and product thinking - all in a fun, interactive, and friendly way. You’ll learn how designers think, how small design decisions shape big emotions, and how digital experiences are crafted to feel smooth, human, and engaging. No boring classes - expect games, real-world examples, creative challenges, and lots of “aha!” moments.
+<br><br>
+And of course, it’s not just about learning. You’ll experience the vibrant energy of Skopje, explore the culture and history of North Macedonia, meet international students from all backgrounds, and create memories long after the course ends.
+<br><br>
+            </p>
+        </div>
+
+    </div>
+
+    <footer id="footer"></footer>
+</body>
+
+</html>

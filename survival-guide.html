@@ -1,0 +1,49 @@
+<!DOCTYPE html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2022, BEST Summer Course Skopje, Skopje" />
+
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Survival Guide - BEST Course in Summer 2022</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html", function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop().split(".html")[0];
+                $("#" + page).addClass("active");
+            });
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+
+<body class="survival">
+    <header id="header"></header>
+
+    <div class="container-fluid w-100">
+        <div class="row justify-content-center pt-2">
+            <h2 class="white-text text-center">SURVIVAL GUIDE</h2>
+            <img class="divider-mark" alt="..." src="./images/divider.png">
+        </div>
+        <div class="row justify-content-center my-2 py-3 w-100 h-100 mx-auto">
+            <iframe style="border:5px;width:80%;height:auto" src="https://ongit line.anyflip.com/iiynl/uojc/mobile/index.html"
+            seamless="seamless" scrolling="no" allowtransparency="true" allowfullscreen="true" ></iframe>
+        </div>
+
+    </div>
+
+    <footer id="footer"></footer>
+</body>
+
+</html>

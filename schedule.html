@@ -1,0 +1,51 @@
+<!DOCTYPE html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2022, BEST Summer Course Skopje, Skopje" />
+
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+
+    <title>Schedule - BEST Course in Summer 2026</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html", function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop().split(".html")[0];
+                $("#" + page).addClass("active");
+            });
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+
+<body class = schedule>
+    <header id="header"></header>
+
+    <div class="container-fluid">
+        <div class="pt-3 row justify-content-center">
+            <h2 class="orange-text text-center">SCHEDULE</h2>
+            <img class="divider-mark" alt="..." src="./images/divider.png">
+        </div>
+        <div class="row my-3">
+            <img src="./images/Schedule.png" alt="Schedule..." class="mx-auto my-2 w-75 h-50">
+        </div>
+        <div class="my-2">
+            <h6 class="text-center pb-2">*This schedule is subject to change. Changes, if necessary, will be announced.
+            </h6>
+        </div>
+    </div>
+
+    <footer id="footer"></footer>
+</body>
+
+</html>

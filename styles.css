@@ -1,0 +1,129 @@
+body{
+    background-color: white;
+    font-family: 'Montserrat';
+}
+#carousel-item{
+    background-color: #205cc6;
+}
+.marking{
+    background-color: #eb6932;
+}
+.custom-font {
+    font-family: 'Spiderman-Homecoming';
+    text-transform: uppercase;
+}
+.orange-text{
+    font-family: 'Anonymous Pro', monospace;
+    margin-top: 25px;
+    font-size: 50px;
+    color:#eb6932;
+    font-weight: bolder;
+}
+.blue-text{
+    font-family: 'Anonymous Pro', monospace;
+    color:#205cc6;
+    font-weight: bolder;
+}
+.white-text{
+    margin-top: 25px;
+    font-size: 50px;
+    font-family: 'Anonymous Pro', monospace;
+    color:#ffffff;
+    font-weight: bolder;
+}
+.marking a {
+    color:white;
+    text-decoration: none;
+}
+.marking a:hover{
+    text-decoration: underline;
+}
+.button{
+    background-color: #eb6932;
+    height:5rem;
+    width:10rem;
+    border: black solid 0.5px;
+    font-size: 2rem;
+}
+.survival{
+    /*
+    Ovoa e kremastata boja za pozadina
+    background-color: #f3eae5;
+    */
+    /*
+    Zelena pozadina
+    background-color: #8ddb6d
+    */ 
+    /*
+    */
+    background-color: #4c86b4;
+}
+.links a{
+    text-decoration: none;
+    font-size:2rem;
+    padding: 20px 15px;
+    color:#205cc6;
+
+}
+.schedule{
+    background-color: #f3eae5;
+}
+#get-to-know-us{
+    background-color: #205cc6;
+    color:white;
+    margin:auto;
+    width: 100%;
+}
+.divider-mark{
+    height:2em;
+    width: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:0.5em;
+    margin-bottom: 0.5em;
+}
+.gfs-logo{
+    height:10em;
+    width:auto;
+}
+.carousel-indicators [data-bs-target] {
+    background-color: black;
+}
+.dropdown{
+    color:white;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border: 2px solid black;
+  }
+.dropdown:hover .dropdown-content {display: block;}
+
+
+.flag{
+    width:auto;
+    height: 20px;
+    border: 1px solid black;
+    padding:0;
+    margin-left: 4px;
+}
+.caption{
+    display: block;
+    z-index: 2;
+    position: absolute;
+    top:25%;
+    padding:0;
+    font-size: 40px;
+    color:white;
+    text-align: center;
+}
