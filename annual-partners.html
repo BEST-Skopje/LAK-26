@@ -1,0 +1,71 @@
+<!DOCTYPE html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords"
+        content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje" />
+
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./styles.css">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <title>Academic Partners - BEST Course in Summer 2026</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#header").load("header.html", function () {
+                var path = window.location.pathname;
+                var page = path.split("/").pop().split(".html")[0];
+                $("#" + page).addClass("active");
+            });
+            $("#footer").load("footer.html");
+        });
+    </script>
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <div class="container-fluid p-0 bg-white">
+
+
+
+        <section id="partners" class="pt-4 pb-2">
+            <div class="row justify-content center mx-0">
+                <h2 class="blue-text text-center">FACULTY OF COMPUTER SCIENCE AND ENGINEERING</h2>
+                <img class="divider-mark" alt="..." src="./images/divider.png">
+            </div>
+            <div class="row my-4 mx-0">
+                <img src="./images/partner-logos/finki_logo.webp" alt="GFS-logo" class=" gfs-logo mx-auto" style="height: 50%; width: 30%;">
+            </div>
+            <div class="h6 text-center my-4 px-5 mx-auto w-75">
+                <p>
+The Faculty of Computer Science and Engineering (FCSE) at Ss. Cyril and Methodius University in Skopje was established in 2011 through the unification of the two largest institutions in the field of informatics and computer technologies in Macedonia: the Institute of Informatics (II) at the Faculty of Natural Sciences and Mathematics and the Institute of Computer Technics and Informatics (ICTI) at the Faculty of Electrical Engineering and Information Technologies.                    
+<br><br>Both institutes have been active since the 1980s, with the Institute of Informatics founded in 1985, and ICTI originating from the Cathedrae of Technical Cybernetics, which was promoted to an institute after its initial establishment as a department in 1982. Over several decades, the two institutes developed strong educational and research capacities, supported by growing student interest and continuous scientific activity.
+<br><br>Long-term collaboration, joint research projects, and shared academic goals led to their formal unification, resulting in the creation of FCSE as a central institution for education and research in informatics and computer engineering in Macedonia. 
+<br><br><strong>
+                        Mission of FCSE <br>
+                    </strong>
+To provide education and research in computer science and engineering, supporting the development of qualified professionals and contributing to the advancement of information and communication technologies.                    <br><br>
+                    <strong>
+                        Vision 
+                    </strong>
+                    <br>
+To strengthen its position as a leading academic institution in computer science and engineering, while supporting international cooperation, knowledge exchange, and technological development.                </p>
+            </div>
+            <div class="text-center links">
+                <a href="https://www.finki.ukim.mk/en" class="fs-4" tar>Link to faculty</a>
+                <!-- <a href="#">Link</a>
+                <a href="#">Link</a> -->
+            </div>
+    </div>
+
+    <footer id="footer"></footer>
+</body>
+
+</html>
