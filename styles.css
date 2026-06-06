@@ -167,3 +167,215 @@ body {
 	color: white;
 	text-align: center;
 }
+
+        /* ЛАК Consistency Sheet Styles */
+        :root {
+            --retro-pink: #F77BB7;
+            --retro-teal: #68C1D3;
+            --retro-beige: #F1DFAE;
+            --retro-lightblue: #A1CCFF;
+            --retro-darkblue: #2C2E77;
+        }
+
+        .russo-font {
+            font-family: 'Russo One', sans-serif;
+            color: var(--retro-darkblue);
+            text-transform: uppercase;
+        }
+
+        .ithaca-font {
+            /* Assuming Ithaca is loaded locally, otherwise falls back to monospace */
+            font-family: 'Ithaca', monospace; 
+            color: var(--retro-darkblue);
+        }
+
+        /* Retro Window Container */
+        .retro-window {
+            background-color: var(--retro-beige);
+            border: 4px solid var(--retro-darkblue);
+            box-shadow: 8px 8px 0px var(--retro-pink);
+            max-width: 900px;
+            margin: 3rem auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Window Title Bar */
+        .retro-titlebar {
+            background-color: var(--retro-darkblue);
+            color: var(--retro-beige);
+            padding: 8px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .retro-titlebar-text {
+            font-family: 'Russo One', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+        }
+
+        .retro-controls button {
+            background-color: var(--retro-beige);
+            border: 2px solid var(--retro-darkblue);
+            color: var(--retro-darkblue);
+            font-weight: bold;
+            width: 30px;
+            height: 30px;
+            margin-left: 5px;
+            cursor: pointer;
+            font-family: monospace;
+        }
+
+        /* Tabs Styling */
+        .retro-tabs-container {
+            padding: 20px 20px 0 20px;
+        }
+
+        .retro-nav-tabs {
+            border-bottom: 3px solid var(--retro-darkblue);
+            margin-bottom: -3px; /* Pull content up to hide bottom border of active tab */
+        }
+
+        .retro-nav-tabs .nav-link {
+            font-family: 'Ithaca', monospace;
+            background-color: var(--retro-lightblue);
+            color: var(--retro-darkblue);
+            border: 3px solid var(--retro-darkblue);
+            border-bottom: none;
+            border-radius: 0;
+            margin-right: 5px;
+            padding: 10px 20px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .retro-nav-tabs .nav-link:hover {
+            background-color: var(--retro-teal);
+        }
+
+        .retro-nav-tabs .nav-link.active {
+            background-color: #ffffff;
+            color: var(--retro-darkblue);
+            border: 3px solid var(--retro-darkblue);
+            border-bottom: 3px solid #ffffff; /* Seamless blend with content */
+        }
+
+        /* Tab Content Styling */
+        .retro-tab-content-wrapper {
+            background-color: #ffffff;
+            border: 3px solid var(--retro-darkblue);
+            padding: 30px;
+            margin: 0 20px 20px 20px;
+        }
+
+        .partner-logo {
+            max-width: 250px;
+            height: auto;
+            display: block;
+            margin: 0 auto 20px auto;
+        }
+		
+	:root {
+    --retro-pink: #F77BB7;
+    --retro-teal: #68C1D3;
+    --retro-beige: #F1DFAE;
+    --retro-lightblue: #A1CCFF;
+    --retro-darkblue: #2C2E77;
+    --retro-yellow: #FFCB05; /* Новата жолта боја за папката */
+}
+
+/* --- КОНТЕЈНЕР ЗА ПАПКАТА И ЈАЗИЧИЊАТА --- */
+.folder-wrapper {
+    display: flex;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 3rem auto;
+}
+
+/* --- ЛЕВИ ЈАЗИЧИЊА --- */
+.folder-tabs {
+    display: flex;
+    flex-direction: column;
+    margin-right: -4px; /* Го влече јазичето врз папката за да ја сокрие линијата */
+    padding-top: 40px; 
+    z-index: 3;
+}
+
+.folder-tab-btn {
+    width: 80px;
+    height: 100px;
+    border: 4px solid var(--retro-darkblue);
+    background-color: #ffffff; 
+    border-radius: 15px 0 0 15px; /* Заоблени само левите ќошеви */
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    padding: 10px;
+}
+
+/* Неактивни јазичиња - малку скриени зад папката */
+.folder-tab-btn:not(.active) {
+    transform: translateX(10px); 
+    z-index: 1;
+    background-color: #e0e0e0; /* Темна позадина за неактивните */
+}
+
+/* Активно јазиче - излегува напред и се спојува со папката */
+.folder-tab-btn.active {
+    background-color: var(--retro-yellow);
+    border-right-color: var(--retro-yellow); /* Ја крие десната граница */
+    z-index: 4;
+    transform: translateX(0); 
+}
+
+/* Слики во јазичињата */
+.folder-tab-btn img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* --- ГЛАВНА ЖОЛТА ПАПКА --- */
+.folder-body {
+    flex-grow: 1;
+    background-color: var(--retro-yellow);
+    border: 4px solid var(--retro-darkblue);
+    border-radius: 0 20px 20px 20px;
+    padding: 30px;
+    min-height: 500px;
+    z-index: 2;
+    box-shadow: 10px 10px 0px var(--retro-pink); /* Ретро сенка */
+}
+
+/* --- ВНАТРЕШЕН ПРОЗОРЕЦ (РЕТРО) --- */
+.inner-retro-window {
+    background-color: #2C2E77;
+    border: 4px solid var(--retro-darkblue);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Фиксирање на огромните логоа во главниот прозорец */
+.partner-logo {
+    max-height: 80px; /* Ограничена висина */
+    width: auto;
+    display: block;
+    margin: 0 auto 30px auto;
+}
+/* --- DEFAULT FOLDER COVER --- */
+.folder-cover-design {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    border: 4px dashed var(--retro-darkblue);
+    border-radius: 10px;
+    text-align: center;
+    background-color: transparent;
+}
