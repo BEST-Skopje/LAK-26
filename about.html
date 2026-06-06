@@ -1,11 +1,10 @@
-<!DOCTYPE html lang="en">
-
+<!DOCTYPE html >
+<html lang="mk">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords"
-          content="Summer Course '26, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje"/>
+    <meta name="keywords" content="Summer Course '26, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje"/>
 
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
@@ -23,42 +22,84 @@
                 $("#" + page).addClass("active");
             });
             $("#footer").load("footer.html");
+
+            /* --- Window Control Functionality Handler Logic --- */
+
+            // 1. Minimize Behavior: Collapses or Expands the window content body
+            $(".btn-minimize").click(function() {
+                var targetCard = $(this).closest(".card");
+                targetCard.find(".card-body").slideToggle(250);
+            });
+
+            // 2. Maximize Behavior: Toggles temporary full-screen kiosk visibility overlay mode
+            $(".btn-maximize").click(function() {
+                var targetCard = $(this).closest(".card");
+
+                if (!targetCard.hasClass("retro-fullscreen")) {
+                    // Inject fullscreen style layout overlay
+                    targetCard.addClass("retro-fullscreen").css({
+                        "position": "fixed",
+                        "top": "0",
+                        "left": "0",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "z-index": "9999",
+                        "margin": "0",
+                        "overflow-y": "auto"
+                    });
+                } else {
+                    // Restore original card layouts
+                    targetCard.removeClass("retro-fullscreen").css({
+                        "position": "",
+                        "top": "",
+                        "left": "",
+                        "width": "",
+                        "height": "",
+                        "z-index": "",
+                        "margin": "",
+                        "overflow-y": ""
+                    });
+                }
+            });
+
+            // 3. Close Behavior: Gracefully fades the selected window out of view
+            $(".btn-close-window").click(function() {
+                var targetCard = $(this).closest(".card");
+                targetCard.fadeOut(300, function() {
+                    $(this).remove(); // Clears space in DOM node tree
+                });
+            });
         });
     </script>
     <style>
         /* Custom Retro Theme Definitions */
-
-        /* 1. Header Bar Container Styling */
         .retro-header {
-            background-color: #4AAAE6 !important; /* Specific light-blue titlebar fill */
-            border-bottom: 5px solid #121945 !important; /* Thick bottom split line */
+            background-color: #4AAAE6 !important;
+            border-bottom: 5px solid #121945 !important;
             font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
         }
 
         .retro-title {
             font-size: 1.15rem;
-            text-shadow: 1px 1px 0px #121945; /* Optional slight crisp shadow for visibility */
+            text-shadow: 1px 1px 0px #121945;
         }
 
-        /* 2. Micro Window Action Buttons */
         .retro-window-btn {
-            background-color: #FFF3DB; /* Cream / off-white button canvas */
-            border: 4px solid #121945;  /* Heavy perimeter border ring */
+            background-color: #FFF3DB;
+            border: 4px solid #121945;
             width: 28px;
             height: 28px;
             position: relative;
-            box-shadow: 3px 3px 0px 0px #121945; /* Crisp solid corner projection drop */
+            box-shadow: 3px 3px 0px 0px #121945;
             cursor: pointer;
         }
 
-        /* Ensure buttons don't deform on active push states */
         .retro-window-btn:active {
             transform: translate(2px, 2px);
             box-shadow: 1px 1px 0px 0px #121945;
         }
 
-        /* 3. Internal Control Elements (Dash, Square, and Cross marks) */
         .retro-dash {
             background-color: #121945;
             width: 12px;
@@ -80,18 +121,15 @@
             line-height: 1;
         }
 
-        /* 4. Main Card Window Borders Override */
         .card {
             border: 5px solid #121945 !important;
-            border-radius: 0 !important; /* Removes Bootstrap defaults to ensure hard edges */
-            box-shadow: 10px 10px 0px 0px #121945; /* Projected canvas pop out effect */
+            border-radius: 0 !important;
+            box-shadow: 10px 10px 0px 0px #121945;
         }
 
-        /* Unique Window Title-bar colors */
         .bg-doc-blue { background-color: #3B99D4 !important; }
         .bg-map-navy { background-color: #1A5FA4 !important; }
 
-        /* Content styling overrides */
         .retro-window-frame {
             border: 4px solid #121945;
             box-shadow: 4px 4px 0px #121945;
@@ -101,23 +139,15 @@
         .text-navy { color: #121945; }
         .bg-cream { background-color: #FFF3DB; }
 
-        /* Custom colored blocks */
         .btn-retro-blue { background-color: #55AADB; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
         .btn-retro-magenta { background-color: #CE3D7A; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
         .btn-retro-yellow { background-color: #EEAE4B; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
 
-        /* Component layout blocks */
         .retro-info-box {
             background-color: #121945;
             color: #FFF3DB;
             border: 4px solid #121945;
             padding: 1.5rem;
-        }
-        .pink-accent-line {
-            height: 5px;
-            background-color: #CE3D7A;
-            width: 65%;
-            margin-bottom: 1.5rem;
         }
     </style>
 </head>
@@ -127,6 +157,7 @@
 
 <div class="container py-4">
 
+    <!-- Card 1: За_БЕСТ.exe -->
     <div class="card mb-5">
         <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
             <div class="d-flex align-items-center gap-2 text-white fw-bold">
@@ -134,42 +165,36 @@
                 <span class="retro-title">За_БЕСТ.exe</span>
             </div>
             <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
+                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
+                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
+                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
             </div>
         </div>
 
         <div class="card-body p-4 bg-white text-navy">
             <div class="row align-items-center g-4">
-
                 <div class="col-lg-5">
                     <div class="p-4 bg-white border border-4 border-dark h-100" style="border-color: #121945 !important;">
                         <h1 class="fw-bold mb-3 text-uppercase" style="color: #CE3D7A; font-size: 3rem; font-family: 'Montserrat', sans-serif;">За БЕСТ</h1>
-
                         <div class="p-2 mb-4 text-dark border border-2 border-dark d-inline-block fw-semibold" style="border-color: #121945 !important; font-family: monospace; font-size: 0.95rem; letter-spacing: -0.5px; background-color: #b1ddf0">
                             Board of European Students of Technology
                         </div>
-
                         <p class="fw-bold lh-base m-0" style="font-size: 1.05rem; letter-spacing: -0.3px;">
-                            БЕСТ е непрофитна, неполитичка, невладина организација која постои од 1989 година. Се состои од студенти од технички универзитети низ Европа кои работат на унапредување на комуникацијата, соработката и размената на идеи меѓу европските студенти. (запишете го дека е на англиски)
+                            БЕСТ е непрофитна, неполитичка, невладина организација која постои од 1989 година. Се состои од студенти од технички универзитети низ Европа кои работат на унапредување на комуникацијата, соработката и размената на идеи меѓу европските студенти.
                         </p>
                     </div>
                 </div>
-
                 <div class="col-lg-7 text-center position-relative">
                     <div class="d-inline-block p-2 position-relative" style="background-color: #EEAE4B; border: 4px solid #121945; box-shadow: 8px 8px 0px 0px #121945;">
                         <img src="./images/group_photo.png" alt="BEST Students" class="img-fluid d-block border border-2 border-dark rounded-0">
-
                         <span class="position-absolute text-warning" style="top: -12px; right: -12px; font-size: 1.5rem; text-shadow: 2px 2px 0px #121945;">✦</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-
+    <!-- Card 2: Меѓународна_Организација.doc -->
     <div class="card mb-5">
         <div class="card-header retro-header bg-doc-blue d-flex align-items-center justify-content-between border-0 p-2">
             <div class="d-flex align-items-center gap-2 text-white fw-bold">
@@ -177,9 +202,9 @@
                 <span class="retro-title">Меѓународна_Организација.doc</span>
             </div>
             <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
+                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
+                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
+                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
             </div>
         </div>
 
@@ -187,12 +212,10 @@
             <h1 class="fw-bold mb-0 text-capitalize" style="color: #4AAAE6; font-size: 2.8rem; font-family: 'Montserrat', sans-serif;">
                 Глобално влијание <span style="font-size: 2.4rem; vertical-align: middle;">🌍</span>
             </h1>
-
             <div class="d-flex my-3" style="height: 6px; width: 95%;">
                 <div style="background-color: #CE3D7A; width: 65%;"></div>
                 <div style="background-color: #121945; width: 35%;"></div>
             </div>
-
             <div class="row g-4 align-items-center mt-2">
                 <div class="col-lg-6 fw-bold" style="font-size: 1.15rem; line-height: 1.7;">
                     <p class="mb-3">
@@ -204,21 +227,17 @@
                         <span style="color: #EEAE4B; font-size: 1.35rem;">3.000</span> активни членови кои работат волонтерски за да обезбедат можности за развој на студентите.
                     </p>
                 </div>
-
                 <div class="col-lg-6">
                     <div class="row g-4">
                         <div class="col-sm-6">
-                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0"
-                                 style="background-color: #BBE2F3; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
+                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #BBE2F3; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
                                 <div class="fs-2 mb-1">🎯</div>
                                 <h3 class="fw-bold mb-2" style="color: #121945; font-size: 1.4rem;">Мисија</h3>
                                 <div class="fw-bold small" style="color: #121945; line-height: 1.3;">Поддршка на личен и професионален развој</div>
                             </div>
                         </div>
-
                         <div class="col-sm-6">
-                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0"
-                                 style="background-color: #F5B7D1; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
+                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #F5B7D1; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
                                 <div class="fs-2 mb-1">🏆</div>
                                 <h3 class="fw-bold mb-2" style="color: #121945; font-size: 1.4rem;">Активности</h3>
                                 <div class="fw-bold small" style="color: #121945; line-height: 1.3;">Курсеви, работилници, натпревари</div>
@@ -230,9 +249,8 @@
         </div>
     </div>
 
-
+    <!-- Card 3: LBG_Skopje.exe -->
     <div class="card mb-5">
-        <!-- Header with corrected user-profile SVG icon -->
         <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
             <div class="d-flex align-items-center gap-2 text-white fw-bold">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -241,33 +259,24 @@
                 <span class="retro-title">LBG_Skopje.exe</span>
             </div>
             <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
+                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
+                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
+                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
             </div>
         </div>
 
-        <!-- Card Body Content -->
         <div class="card-body p-4 bg-white text-navy">
             <div class="row g-4 align-items-center">
-
-                <!-- Left Side: Image wrapped in the custom offset pink frame -->
                 <div class="col-md-5 text-center">
-                    <div class="p-2 border border-4 d-inline-block position-relative rounded-0"
-                         style="background-color: #CE3D7A; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
+                    <div class="p-2 border border-4 d-inline-block position-relative rounded-0" style="background-color: #CE3D7A; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
                         <img src="./images/skop_yeah.png" alt="SkopYeah Shirt" class="img-fluid d-block border border-4 border-dark rounded-0" style="border-color: #121945 !important;">
                     </div>
                 </div>
-
-                <!-- Right Side: Header, description text, and the styled list console -->
                 <div class="col-md-7">
                     <h2 class="fw-bold mb-3 text-uppercase" style="color: #EEAE4B; font-size: 2.4rem; font-family: 'Montserrat', sans-serif;">БЕСТ Скопје</h2>
-
                     <p class="fw-bold lh-base mb-4" style="font-size: 1.05rem; letter-spacing: -0.2px;">
                         Локалната БЕСТ Група Скопје е основана со цел да ги поврзе студентите од техничките факултети во Скопје со меѓународната БЕСТ заедница. Нашата група е составена од мотивирани студенти кои работат на организирање на различни активности и настани.
                     </p>
-
-                    <!-- Terminal/Info box featuring custom light-blue perimeter and blink trail -->
                     <div class="retro-info-box p-4 rounded-0" style="border: 4px solid #3B99D4 !important; background-color: #121945; color: #FFF3DB;">
                         <div class="fw-bold mb-3" style="font-size: 1.35rem; letter-spacing: 0.5px;">
                             <span style="color: #FFF3DB; margin-right: 4px;">&gt;</span> Што нудиме?
@@ -279,118 +288,99 @@
                             <li class="mb-1">* Развој на лидерски вештини</li>
                             <li>* Културни и социјални активности</li>
                         </ul>
-                        <!-- Retro terminal underscore character -->
                         <div class="text-secondary mt-2 opacity-50 font-monospace" style="font-size: 0.9rem;">_</div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-
+    <!-- Card 4: Locations.map -->
     <div class="card mb-5">
-        <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
+        <div class="card-header retro-header bg-map-navy d-flex align-items-center justify-content-between border-0 p-2">
             <div class="d-flex align-items-center gap-2 text-white fw-bold">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="#CE3D7A" stroke="#121945" stroke-width="2"/><circle cx="12" cy="9" r="3" fill="#FFF3DB" stroke="#121945" stroke-width="2"/></svg>
                 <span class="retro-title">Locations.map</span>
             </div>
             <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
+                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
+                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
+                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
             </div>
         </div>
         <div class="card-body p-4 bg-white text-navy text-center">
-            <!-- Clickable location header redirecting to Google Maps -->
             <a href="https://www.google.com/maps/place/Skopje/" target="_blank" rel="noopener noreferrer" class="text-decoration-none d-inline-block hover-opacity">
                 <h2 class="fw-bold mb-3 text-uppercase" style="color: #121945; font-size: 2.8rem; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px;">
                     Скопје и Македонија
                 </h2>
             </a>
 
-            <!-- Main Banner Block -->
             <div class="btn-retro-yellow py-3 px-4 mx-auto mb-4 text-center d-block rounded-0 fw-bold" style="max-width: 650px; color: #121945; line-height: 1.6;">
                 Главен град и најголем град на Северна Македонија.<br>Културен, економски и академски центар!
             </div>
 
-            <!-- 4 Column Feature Deck Grid with Equal Width & Height Configurations -->
             <div class="row g-3 max-width-container mx-auto justify-content-center">
-
-                <!-- Card 1: Население -->
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-blue w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center"
-                         style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
+                    <div class="btn btn-retro-blue w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
                         Население
                     </div>
                 </div>
-
-                <!-- Card 2: Универзитети -->
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-magenta w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center"
-                         style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
+                    <div class="btn btn-retro-magenta w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
                         Универзитети
                     </div>
                 </div>
-
-                <!-- Card 3: Години Историја -->
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-yellow w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center"
-                         style="min-height: 140px; font-size: 1.1rem; color: #121945; line-height: 1.3; letter-spacing: 0.5px;">
+                    <div class="btn btn-retro-yellow w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; color: #121945; line-height: 1.3; letter-spacing: 0.5px;">
                         <div>Години</div>
                         <div>Историја</div>
                     </div>
                 </div>
-
-                <!-- Card 4: Македонија -->
                 <div class="col-6 col-md-3">
-                    <div class="btn w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center"
-                         style="background-color: #BBE2F3; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; min-height: 140px; font-size: 1.1rem; line-height: 1.3; letter-spacing: 0.5px;">
+                    <div class="btn w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="background-color: #BBE2F3; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; min-height: 140px; font-size: 1.1rem; line-height: 1.3; letter-spacing: 0.5px;">
                         <span style="font-size: 1.6rem; margin-bottom: 4px; line-height: 1;">🇲🇰</span>
                         Македонија
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- Banner Background Container Wrapper -->
-    <div class="position-relative w-100 py-5 px-3 px-md-5 my-4 overflow-visible" style=" min-height: 280px; font-family: 'Montserrat', sans-serif;">
+    <!-- Pixel Art Callout Footer Banner Section -->
+    <div class="position-relative w-100 py-5 my-4" style="min-height: 250px; font-family: 'Montserrat', sans-serif;">
 
-        <!-- 1. Top Centered Cloud Wave Divider Asset ("Groups (2).png") -->
-        <div class="position-absolute start-50 translate-middle-x" style="top: 5px; width: 60%; max-width: 650px; z-index: 1;">
-            <img src="./images/Groups (2).png" alt="Pixel Clouds" class="img-fluid w-100 d-block">
+        <!-- 1. Top Centered Clouds Grid (Isolated correctly via absolute top rules) -->
+        <div style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 620px; z-index: 10; pointer-events: none;">
+            <img src="./images/Groups (2).png" alt="Pixel Clouds" style="width: 100%; height: auto; display: block; image-rendering: pixelated;">
         </div>
 
-        <!-- 2. Main Dark Navy Callout Frame Box Container -->
-        <div class="mx-auto position-relative border border-4 text-center d-flex align-items-center justify-content-center p-4 p-md-5"
-             style="background-color: #121945; border-color: #3B99D4 !important; max-width: 950px; min-height: 150px; margin-top: 45px; box-shadow: 0px 8px 0px rgba(18, 25, 69, 0.15); z-index: 2;">
+        <!-- 2. Dark Navy Invitation Callout Container Frame Box -->
+        <div class="mx-auto position-relative" style="background-color: #121945; border: 4px solid #4AAAE6; max-width: 860px; margin-top: 35px; z-index: 20; box-sizing: border-box;">
 
-            <!-- Main Invitation Script Text With Rocket Emoji Inline -->
-            <h2 class="fw-bold text-white m-0 text-center text-uppercase tracking-wide" style="font-size: calc(1.3rem + 1vw); letter-spacing: 0.5px; line-height: 1.4;">
-                Придружете ни се во градењето на подобра иднина! <span class="d-inline-block ms-1 animate-rocket">🚀</span>
-            </h2>
-
-            <!-- 3. Bottom Left Corner Crashing Wave Asset ("Groups (1).png") -->
-            <div class="position-absolute" style="bottom: -20px; left: -35px; width: 110px; z-index: 3;">
-                <img src="./images/Groups (1).png" alt="Pixel Wave" class="img-fluid w-100 d-block">
+            <div class="p-4 p-md-5 text-center">
+                <h2 class="fw-bold text-white m-0 text-uppercase" style="font-size: calc(1.1rem + 1vw); letter-spacing: 1px; line-height: 1.4;">
+                    Придружете ни се во градењето на подобра иднина! 🚀
+                </h2>
             </div>
 
-            <!-- 4. Top Right Corner Blossom Lily Asset ("Groups.png") -->
-            <div class="position-absolute" style="top: -45px; right: -35px; width: 100px; z-index: 3;">
-                <img src="./images/Groups.png" alt="Pixel Lily" class="img-fluid w-100 d-block">
+            <!-- 3. Bottom Left Corner Crashing Wave Image -->
+            <div style="position: absolute; bottom: -12px; left: -20px; width: 90px; height: 50px; z-index: 30; pointer-events: none;">
+                <img src="./images/Groups (1).png" alt="Pixel Wave" style="width: 100%; height: 100%; object-fit: contain; display: block; image-rendering: pixelated;">
+            </div>
+
+            <!-- 4. Top Right Corner Blossom Lily Image (Locked down with precise px boundaries to prevent sizing bugs) -->
+            <div style="position: absolute; top: -45px; right: -30px; width: 95px; height: 95px; z-index: 30; pointer-events: none;">
+                <img src="./images/Groups.png" alt="Pixel Lily" style="width: 100%; height: 100%; object-fit: contain; display: block; image-rendering: pixelated;">
             </div>
 
         </div>
 
         <!-- 5. Double Light Blue Lower Base Border Accent Line -->
-        <div class="mx-auto" style="max-width: 950px; height: 6px; background-color: #4AAAE6; margin-top: 4px;"></div>
+        <div class="mx-auto" style="max-width: 860px; height: 5px; background-color: #4AAAE6; margin: 4px auto 0 auto;"></div>
     </div>
 
 </div>
 
 <footer id="footer"></footer>
 </body>
-
 </html>
