@@ -300,7 +300,6 @@ body {
     flex-direction: column;
     margin-right: -4px; /* Го влече јазичето врз папката за да ја сокрие линијата */
     padding-top: 40px; 
-    z-index: 3;
 }
 
 .folder-tab-btn {
@@ -316,6 +315,7 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     padding: 10px;
+	position: relative;
 }
 
 /* Неактивни јазичиња - малку скриени зад папката */
@@ -350,6 +350,7 @@ body {
     min-height: 500px;
     z-index: 2;
     box-shadow: 10px 10px 0px var(--retro-pink); /* Ретро сенка */
+	position: relative;
 }
 
 /* --- ВНАТРЕШЕН ПРОЗОРЕЦ (РЕТРО) --- */
