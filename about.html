@@ -1,6 +1,6 @@
-<!DOCTYPE html >
+<!DOCTYPE html>
 <html lang="mk">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,44 +23,49 @@
             });
             $("#footer").load("footer.html");
 
-            /* --- Window Control Functionality Handler Logic --- */
+        // 1. Minimize Behavior
+        $(".btn-minimize").click(function() {
+            var targetCard = $(this).closest(".card");
+            var isMinimized = $(this).hasClass("active");
 
-            // 1. Minimize Behavior: Collapses or Expands the window content body
-            $(".btn-minimize").click(function() {
-                var targetCard = $(this).closest(".card");
-                targetCard.find(".card-body").slideToggle(250);
-            });
+            $(this).toggleClass("active");
+            targetCard.find(".card-body").slideToggle(250);
 
-            // 2. Maximize Behavior: Toggles temporary full-screen kiosk visibility overlay mode
-            $(".btn-maximize").click(function() {
-                var targetCard = $(this).closest(".card");
+            if (isMinimized) {
+                $(this).blur();
+            }
+        });
 
-                if (!targetCard.hasClass("retro-fullscreen")) {
-                    // Inject fullscreen style layout overlay
-                    targetCard.addClass("retro-fullscreen").css({
-                        "position": "fixed",
-                        "top": "0",
-                        "left": "0",
-                        "width": "100vw",
-                        "height": "100vh",
-                        "z-index": "9999",
-                        "margin": "0",
-                        "overflow-y": "auto"
-                    });
-                } else {
-                    // Restore original card layouts
-                    targetCard.removeClass("retro-fullscreen").css({
-                        "position": "",
-                        "top": "",
-                        "left": "",
-                        "width": "",
-                        "height": "",
-                        "z-index": "",
-                        "margin": "",
-                        "overflow-y": ""
-                    });
-                }
-            });
+        // 2. Maximize Behavior
+        $(".btn-maximize").click(function() {
+            var targetCard = $(this).closest(".card");
+            var isMaximized = targetCard.hasClass("retro-fullscreen");
+
+            if (!isMaximized) {
+                targetCard.addClass("retro-fullscreen").css({
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0",
+                    "width": "100vw",
+                    "height": "100vh",
+                    "z-index": "9999",
+                    "margin": "0",
+                    "overflow-y": "auto"
+                });
+            } else {
+                targetCard.removeClass("retro-fullscreen").css({
+                    "position": "",
+                    "top": "",
+                    "left": "",
+                    "width": "",
+                    "height": "",
+                    "z-index": "",
+                    "margin": "",
+                    "overflow-y": ""
+                });
+                $(this).blur();
+            }
+        });
 
             // 3. Close Behavior: Gracefully fades the selected window out of view
             $(".btn-close-window").click(function() {
@@ -72,11 +77,29 @@
         });
     </script>
     <style>
-        /* Custom Retro Theme Definitions */
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+        @font-face {
+            font-family: 'Ithaca';
+            src: url('/images/fonts/Ithaca.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        * {
+            font-family: 'Ithaca', monospace !important;
+            font-weight: normal !important;
+            font-size: 23px !important;
+        }
+        h1, h2, h3, h4, h5, h6, .retro-title, .font-heading {
+            font-family: 'Russo One', sans-serif !important;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 35px !important;
+        }
+
         .retro-header {
             background-color: #4AAAE6 !important;
             border-bottom: 5px solid #121945 !important;
-            font-family: 'Montserrat', sans-serif;
             letter-spacing: 0.5px;
         }
 
@@ -139,15 +162,40 @@
         .text-navy { color: #121945; }
         .bg-cream { background-color: #FFF3DB; }
 
-        .btn-retro-blue { background-color: #55AADB; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
-        .btn-retro-magenta { background-color: #CE3D7A; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
-        .btn-retro-yellow { background-color: #EEAE4B; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; font-weight: bold; }
+        .btn-retro-blue { background-color: #55AADB; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; }
+        .btn-retro-magenta { background-color: #CE3D7A; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945;}
+        .btn-retro-yellow { background-color: #EEAE4B; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945;}
 
         .retro-info-box {
             background-color: #121945;
             color: #FFF3DB;
             border: 4px solid #121945;
             padding: 1.5rem;
+        }
+
+        .map-pin-icon {
+            transition: transform 0.15s ease;
+            transform-origin: center bottom;
+            cursor: pointer;
+        }
+
+        .map-icon-link:hover .map-pin-icon {
+            animation: pin-bounce 0.5s ease infinite alternate;
+        }
+
+        .map-icon-link:active .map-pin-icon {
+            animation: pin-drop 0.3s ease forwards;
+        }
+
+        @keyframes pin-bounce {
+            0%   { transform: translateY(0px); }
+            100% { transform: translateY(-5px); }
+        }
+
+        @keyframes pin-drop {
+            0%   { transform: translateY(-8px) scale(1); }
+            60%  { transform: translateY(3px) scale(0.95); }
+            100% { transform: translateY(0px) scale(1); }
         }
     </style>
 </head>
@@ -160,7 +208,7 @@
     <!-- Card 1: За_БЕСТ.exe -->
     <div class="card mb-5">
         <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white fw-bold">
+            <div class="d-flex align-items-center gap-2 text-white">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" fill="#717074" stroke="#121945" stroke-width="2"/><rect x="7" y="3" width="7" height="5" fill="#FFF3DB" stroke="#121945" stroke-width="2"/><rect x="6" y="12" width="12" height="9" fill="#FFF3DB" stroke="#121945" stroke-width="2"/></svg>
                 <span class="retro-title">За_БЕСТ.exe</span>
             </div>
@@ -175,18 +223,18 @@
             <div class="row align-items-center g-4">
                 <div class="col-lg-5">
                     <div class="p-4 bg-white border border-4 border-dark h-100" style="border-color: #121945 !important;">
-                        <h1 class="fw-bold mb-3 text-uppercase" style="color: #CE3D7A; font-size: 3rem; font-family: 'Montserrat', sans-serif;">За БЕСТ</h1>
-                        <div class="p-2 mb-4 text-dark border border-2 border-dark d-inline-block fw-semibold" style="border-color: #121945 !important; font-family: monospace; font-size: 0.95rem; letter-spacing: -0.5px; background-color: #b1ddf0">
+                        <h1 class="mb-3 text-uppercase" style="color: #CE3D7A; font-size: 3rem; font-family: 'Russo One', sans-serif;">За БЕСТ</h1>
+                        <div class="p-2 mb-4 text-dark border border-2 border-dark d-inline-block fw-semibold" style="border-color: #121945 !important; font-size: 0.95rem; letter-spacing: -0.5px; background-color: #b1ddf0">
                             Board of European Students of Technology
                         </div>
-                        <p class="fw-bold lh-base m-0" style="font-size: 1.05rem; letter-spacing: -0.3px;">
+                        <p class="lh-base m-0" style="font-size: 1.05rem; letter-spacing: -0.3px;">
                             БЕСТ е непрофитна, неполитичка, невладина организација која постои од 1989 година. Се состои од студенти од технички универзитети низ Европа кои работат на унапредување на комуникацијата, соработката и размената на идеи меѓу европските студенти.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-7 text-center position-relative">
                     <div class="d-inline-block p-2 position-relative" style="background-color: #EEAE4B; border: 4px solid #121945; box-shadow: 8px 8px 0px 0px #121945;">
-                        <img src="./images/group_photo.png" alt="BEST Students" class="img-fluid d-block border border-2 border-dark rounded-0">
+                        <img src="./images/cheesy.png" alt="BEST Students" class="img-fluid d-block border border-2 border-dark rounded-0">
                         <span class="position-absolute text-warning" style="top: -12px; right: -12px; font-size: 1.5rem; text-shadow: 2px 2px 0px #121945;">✦</span>
                     </div>
                 </div>
@@ -197,7 +245,7 @@
     <!-- Card 2: Меѓународна_Организација.doc -->
     <div class="card mb-5">
         <div class="card-header retro-header bg-doc-blue d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white fw-bold">
+            <div class="d-flex align-items-center gap-2 text-white">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="#FFF3DB" stroke="#121945" stroke-width="2"/><path d="M14 2V8H20" stroke="#121945" stroke-width="2"/></svg>
                 <span class="retro-title">Меѓународна_Организација.doc</span>
             </div>
@@ -209,7 +257,7 @@
         </div>
 
         <div class="card-body p-4 bg-white text-navy">
-            <h1 class="fw-bold mb-0 text-capitalize" style="color: #4AAAE6; font-size: 2.8rem; font-family: 'Montserrat', sans-serif;">
+            <h1 class="mb-0 text-capitalize" style="color: #4AAAE6; font-size: 2.8rem;">
                 Глобално влијание <span style="font-size: 2.4rem; vertical-align: middle;">🌍</span>
             </h1>
             <div class="d-flex my-3" style="height: 6px; width: 95%;">
@@ -217,7 +265,7 @@
                 <div style="background-color: #121945; width: 35%;"></div>
             </div>
             <div class="row g-4 align-items-center mt-2">
-                <div class="col-lg-6 fw-bold" style="font-size: 1.15rem; line-height: 1.7;">
+                <div class="col-lg-6" style="font-size: 1.15rem; line-height: 1.7;">
                     <p class="mb-3">
                         Денес, БЕСТ е претставена во повеќе од <br>
                         <span style="color: #CE3D7A; font-size: 1.35rem;">90</span> универзитети во
@@ -232,15 +280,15 @@
                         <div class="col-sm-6">
                             <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #BBE2F3; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
                                 <div class="fs-2 mb-1">🎯</div>
-                                <h3 class="fw-bold mb-2" style="color: #121945; font-size: 1.4rem;">Мисија</h3>
-                                <div class="fw-bold small" style="color: #121945; line-height: 1.3;">Поддршка на личен и професионален развој</div>
+                                <h3 class="mb-2" style="color: #121945; font-size: 1.4rem;">Мисија</h3>
+                                <div class="small" style="color: #121945; line-height: 1.3;">Поддршка на личен и професионален развој</div>
                             </div>
                         </div>
                         <div class="col-sm-6">
                             <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #F5B7D1; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
                                 <div class="fs-2 mb-1">🏆</div>
-                                <h3 class="fw-bold mb-2" style="color: #121945; font-size: 1.4rem;">Активности</h3>
-                                <div class="fw-bold small" style="color: #121945; line-height: 1.3;">Курсеви, работилници, натпревари</div>
+                                <h3 class="mb-2" style="color: #121945; font-size: 1.4rem;">Активности</h3>
+                                <div class="small" style="color: #121945; line-height: 1.3;">Курсеви, работилници, натпревари</div>
                             </div>
                         </div>
                     </div>
@@ -252,7 +300,7 @@
     <!-- Card 3: LBG_Skopje.exe -->
     <div class="card mb-5">
         <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white fw-bold">
+            <div class="d-flex align-items-center gap-2 text-white">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#FFF3DB" stroke="#121945" stroke-width="1"/>
                 </svg>
@@ -269,19 +317,19 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-5 text-center">
                     <div class="p-2 border border-4 d-inline-block position-relative rounded-0" style="background-color: #CE3D7A; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
-                        <img src="./images/skop_yeah.png" alt="SkopYeah Shirt" class="img-fluid d-block border border-4 border-dark rounded-0" style="border-color: #121945 !important;">
+                        <img src="./images/dioklecijan.png" alt="SkopYeah Shirt" class="img-fluid d-block border border-4 border-dark rounded-0" style="border-color: #121945 !important;">
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <h2 class="fw-bold mb-3 text-uppercase" style="color: #EEAE4B; font-size: 2.4rem; font-family: 'Montserrat', sans-serif;">БЕСТ Скопје</h2>
-                    <p class="fw-bold lh-base mb-4" style="font-size: 1.05rem; letter-spacing: -0.2px;">
+                    <h2 class="mb-3 text-uppercase" style="color: #EEAE4B; font-size: 2.4rem;">БЕСТ Скопје</h2>
+                    <p class="lh-base mb-4" style="font-size: 1.05rem; letter-spacing: -0.2px;">
                         Локалната БЕСТ Група Скопје е основана со цел да ги поврзе студентите од техничките факултети во Скопје со меѓународната БЕСТ заедница. Нашата група е составена од мотивирани студенти кои работат на организирање на различни активности и настани.
                     </p>
                     <div class="retro-info-box p-4 rounded-0" style="border: 4px solid #3B99D4 !important; background-color: #121945; color: #FFF3DB;">
-                        <div class="fw-bold mb-3" style="font-size: 1.35rem; letter-spacing: 0.5px;">
-                            <span style="color: #FFF3DB; margin-right: 4px;">&gt;</span> Што нудиме?
+                        <div class="mb-3" style="font-size: 1.35rem; letter-spacing: 0.5px; color: #F9EDB3;">
+                            <span style="margin-right: 4px;">&gt;</span> Што нудиме?
                         </div>
-                        <ul class="list-unstyled fw-bold ps-3 m-0" style="font-size: 1.1rem; line-height: 1.8;">
+                        <ul class="list-unstyled ps-3 m-0" style="font-size: 1.1rem; line-height: 1.8; color: #F9EDB3;">
                             <li class="mb-1">* Образовни курсеви и работилници</li>
                             <li class="mb-1">* Меѓународна размена на студенти</li>
                             <li class="mb-1">* Вмрежување со компании</li>
@@ -298,9 +346,15 @@
     <!-- Card 4: Locations.map -->
     <div class="card mb-5">
         <div class="card-header retro-header bg-map-navy d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white fw-bold">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="#CE3D7A" stroke="#121945" stroke-width="2"/><circle cx="12" cy="9" r="3" fill="#FFF3DB" stroke="#121945" stroke-width="2"/></svg>
+            <div class="d-flex align-items-center gap-2 text-white">
+            <a href="https://maps.app.goo.gl/x94SbQwCu4i8c7Sd6" target="_blank" rel="noopener noreferrer"
+            class="d-flex align-items-center gap-2 text-white text-decoration-none map-icon-link">
+                <svg class="map-pin-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="#CE3D7A" stroke="#121945" stroke-width="2"/>
+                    <circle cx="12" cy="9" r="3" fill="#FFF3DB" stroke="#121945" stroke-width="2"/>
+                </svg>
                 <span class="retro-title">Locations.map</span>
+            </a>
             </div>
             <div class="d-flex gap-1 align-items-center pe-2">
                 <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
@@ -310,34 +364,34 @@
         </div>
         <div class="card-body p-4 bg-white text-navy text-center">
             <a href="https://www.google.com/maps/place/Skopje/" target="_blank" rel="noopener noreferrer" class="text-decoration-none d-inline-block hover-opacity">
-                <h2 class="fw-bold mb-3 text-uppercase" style="color: #121945; font-size: 2.8rem; font-family: 'Montserrat', sans-serif; letter-spacing: 0.5px;">
+                <h2 class="mb-3 text-uppercase" style="color: #121945; font-size: 2.8rem; letter-spacing: 0.5px;">
                     Скопје и Македонија
                 </h2>
             </a>
 
-            <div class="btn-retro-yellow py-3 px-4 mx-auto mb-4 text-center d-block rounded-0 fw-bold" style="max-width: 650px; color: #121945; line-height: 1.6;">
+            <div class="btn-retro-yellow py-3 px-4 mx-auto mb-4 text-center d-block rounded-0" style="max-width: 650px; color: #121945; line-height: 1.6;">
                 Главен град и најголем град на Северна Македонија.<br>Културен, економски и академски центар!
             </div>
 
             <div class="row g-3 max-width-container mx-auto justify-content-center">
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-blue w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
+                    <div class="btn btn-retro-blue w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; letter-spacing: 0.5px;">
                         Население
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-magenta w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; letter-spacing: 0.5px;">
+                    <div class="btn btn-retro-magenta w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; letter-spacing: 0.5px;">
                         Универзитети
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-yellow w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; color: #121945; line-height: 1.3; letter-spacing: 0.5px;">
-                        <div>Години</div>
-                        <div>Историја</div>
+                    <div class="btn btn-retro-yellow w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; color: #121945; line-height: 1.3; letter-spacing: 0.5px;">
+                        <div style="font-family: 'Russo One' !important;">Години</div>
+                        <div style="font-family: 'Russo One' !important;">Историја</div>
                     </div>
                 </div>
                 <div class="col-6 col-md-3">
-                    <div class="btn w-100 p-3 rounded-0 text-uppercase fw-bold d-flex flex-column align-items-center justify-content-center" style="background-color: #BBE2F3; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; min-height: 140px; font-size: 1.1rem; line-height: 1.3; letter-spacing: 0.5px;">
+                    <div class="btn w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="background-color: #BBE2F3; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; line-height: 1.3; letter-spacing: 0.5px;">
                         <span style="font-size: 1.6rem; margin-bottom: 4px; line-height: 1;">🇲🇰</span>
                         Македонија
                     </div>
@@ -347,7 +401,7 @@
     </div>
 
     <!-- Pixel Art Callout Footer Banner Section -->
-    <div class="position-relative w-100 py-5 my-4" style="min-height: 250px; font-family: 'Montserrat', sans-serif;">
+    <div class="position-relative w-100 py-5 my-4" style="min-height: 250px;">
 
         <!-- 1. Top Centered Clouds Grid (Isolated correctly via absolute top rules) -->
         <div style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 620px; z-index: 10; pointer-events: none;">
@@ -358,7 +412,7 @@
         <div class="mx-auto position-relative" style="background-color: #121945; border: 4px solid #4AAAE6; max-width: 860px; margin-top: 35px; z-index: 20; box-sizing: border-box;">
 
             <div class="p-4 p-md-5 text-center">
-                <h2 class="fw-bold text-white m-0 text-uppercase" style="font-size: calc(1.1rem + 1vw); letter-spacing: 1px; line-height: 1.4;">
+                <h2 class="m-0 text-uppercase" style="color: #BBE2F3; font-size: calc(1.1rem + 1vw); font-family: 'Ithaca' !important;letter-spacing: 1px; line-height: 1.4;">
                     Придружете ни се во градењето на подобра иднина! 🚀
                 </h2>
             </div>
