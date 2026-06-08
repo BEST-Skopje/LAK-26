@@ -28,12 +28,20 @@
             var targetCard = $(this).closest(".card");
             var isMinimized = $(this).hasClass("active");
 
+            // If maximized, exit maximize first
+            if (targetCard.hasClass("retro-fullscreen")) {
+                targetCard.removeClass("retro-fullscreen").css({
+                    "position": "", "top": "", "left": "",
+                    "width": "", "height": "", "z-index": "",
+                    "margin": "", "overflow-y": ""
+                });
+                targetCard.find(".btn-maximize").blur();
+            }
+
             $(this).toggleClass("active");
             targetCard.find(".card-body").slideToggle(250);
 
-            if (isMinimized) {
-                $(this).blur();
-            }
+            if (isMinimized) $(this).blur();
         });
 
         // 2. Maximize Behavior
@@ -41,27 +49,23 @@
             var targetCard = $(this).closest(".card");
             var isMaximized = targetCard.hasClass("retro-fullscreen");
 
+            // If minimized, restore it first
+            if (targetCard.find(".btn-minimize").hasClass("active")) {
+                targetCard.find(".btn-minimize").removeClass("active").blur();
+                targetCard.find(".card-body").slideDown(250);
+            }
+
             if (!isMaximized) {
                 targetCard.addClass("retro-fullscreen").css({
-                    "position": "fixed",
-                    "top": "0",
-                    "left": "0",
-                    "width": "100vw",
-                    "height": "100vh",
-                    "z-index": "9999",
-                    "margin": "0",
-                    "overflow-y": "auto"
+                    "position": "fixed", "top": "0", "left": "0",
+                    "width": "100vw", "height": "100vh", "z-index": "9999",
+                    "margin": "0", "overflow-y": "auto"
                 });
             } else {
                 targetCard.removeClass("retro-fullscreen").css({
-                    "position": "",
-                    "top": "",
-                    "left": "",
-                    "width": "",
-                    "height": "",
-                    "z-index": "",
-                    "margin": "",
-                    "overflow-y": ""
+                    "position": "", "top": "", "left": "",
+                    "width": "", "height": "", "z-index": "",
+                    "margin": "", "overflow-y": ""
                 });
                 $(this).blur();
             }
@@ -87,14 +91,14 @@
         * {
             font-family: 'Ithaca', monospace !important;
             font-weight: normal !important;
-            font-size: 23px !important;
+            font-size: clamp(14px, 2vw, 23px) !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: clamp(20px, 4vw, 35px) !important;
         }
         h1, h2, h3, h4, h5, h6, .retro-title, .font-heading {
             font-family: 'Russo One', sans-serif !important;
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-size: 35px !important;
         }
 
         .retro-header {
@@ -104,7 +108,7 @@
         }
 
         .retro-title {
-            font-size: 1.15rem;
+            font-size: clamp(10px, 2.5vw, 1.15rem);
             text-shadow: 1px 1px 0px #121945;
         }
 
