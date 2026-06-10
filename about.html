@@ -1,443 +1,961 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="mk">
-    <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="Summer Course '26, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="Summer Course '26, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje"
+    />
 
-    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./styles.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat"
+      rel="stylesheet"
+    />
     <title>About Us - BEST Course in Summer 2026</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 
     <script>
-        $(document).ready(function () {
-            $("#header").load("header.html", function () {
-                var path = window.location.pathname;
-                var page = path.split("/").pop().split(".html")[0];
-                $("#" + page).addClass("active");
-            });
-            $("#footer").load("footer.html");
+      $(document).ready(function () {
+        $("#header").load("header.html", function () {
+          var path = window.location.pathname;
+          var page = path.split("/").pop().split(".html")[0];
+          $("#" + page).addClass("active");
+        });
+        $("#footer").load("footer.html");
 
         // 1. Minimize Behavior
-        $(".btn-minimize").click(function() {
-            var targetCard = $(this).closest(".card");
-            var isMinimized = $(this).hasClass("active");
+        $(".btn-minimize").click(function () {
+          var targetCard = $(this).closest(".card");
+          var isMinimized = $(this).hasClass("active");
 
-            // If maximized, exit maximize first
-            if (targetCard.hasClass("retro-fullscreen")) {
-                targetCard.removeClass("retro-fullscreen").css({
-                    "position": "", "top": "", "left": "",
-                    "width": "", "height": "", "z-index": "",
-                    "margin": "", "overflow-y": ""
-                });
-                targetCard.find(".btn-maximize").blur();
-            }
+          if (targetCard.hasClass("retro-fullscreen")) {
+            targetCard.removeClass("retro-fullscreen").css({
+              position: "",
+              top: "",
+              left: "",
+              width: "",
+              height: "",
+              "z-index": "",
+              margin: "",
+              "overflow-y": "",
+            });
+            targetCard.find(".btn-maximize").blur();
+          }
 
-            $(this).toggleClass("active");
-            targetCard.find(".card-body").slideToggle(250);
+          $(this).toggleClass("active");
+          targetCard.find(".card-body").slideToggle(250);
 
-            if (isMinimized) $(this).blur();
+          if (isMinimized) $(this).blur();
         });
 
         // 2. Maximize Behavior
-        $(".btn-maximize").click(function() {
-            var targetCard = $(this).closest(".card");
-            var isMaximized = targetCard.hasClass("retro-fullscreen");
+        $(".btn-maximize").click(function () {
+          var targetCard = $(this).closest(".card");
+          var isMaximized = targetCard.hasClass("retro-fullscreen");
 
-            // If minimized, restore it first
-            if (targetCard.find(".btn-minimize").hasClass("active")) {
-                targetCard.find(".btn-minimize").removeClass("active").blur();
-                targetCard.find(".card-body").slideDown(250);
-            }
+          if (targetCard.find(".btn-minimize").hasClass("active")) {
+            targetCard.find(".btn-minimize").removeClass("active").blur();
+            targetCard.find(".card-body").slideDown(250);
+          }
 
-            if (!isMaximized) {
-                targetCard.addClass("retro-fullscreen").css({
-                    "position": "fixed", "top": "0", "left": "0",
-                    "width": "100vw", "height": "100vh", "z-index": "9999",
-                    "margin": "0", "overflow-y": "auto"
-                });
-            } else {
-                targetCard.removeClass("retro-fullscreen").css({
-                    "position": "", "top": "", "left": "",
-                    "width": "", "height": "", "z-index": "",
-                    "margin": "", "overflow-y": ""
-                });
-                $(this).blur();
-            }
-        });
-
-            // 3. Close Behavior: Gracefully fades the selected window out of view
-            $(".btn-close-window").click(function() {
-                var targetCard = $(this).closest(".card");
-                targetCard.fadeOut(300, function() {
-                    $(this).remove(); // Clears space in DOM node tree
-                });
+          if (!isMaximized) {
+            targetCard.addClass("retro-fullscreen").css({
+              position: "fixed",
+              top: "0",
+              left: "0",
+              width: "100vw",
+              height: "100vh",
+              "z-index": "9999",
+              margin: "0",
+              "overflow-y": "auto",
             });
+          } else {
+            targetCard.removeClass("retro-fullscreen").css({
+              position: "",
+              top: "",
+              left: "",
+              width: "",
+              height: "",
+              "z-index": "",
+              margin: "",
+              "overflow-y": "",
+            });
+            $(this).blur();
+          }
         });
+
+        // 3. Close Behavior
+        $(".btn-close-window").click(function () {
+          var targetCard = $(this).closest(".card");
+          targetCard.fadeOut(300, function () {
+            $(this).remove();
+          });
+        });
+      });
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
-        @font-face {
-            font-family: 'Ithaca';
-            src: url('/images/fonts/Ithaca.ttf') format('truetype');
-            font-weight: normal;
-            font-style: normal;
-        }
-        * {
-            font-family: 'Ithaca', monospace !important;
-            font-weight: normal !important;
-            font-size: clamp(14px, 2vw, 23px) !important;
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+      @font-face {
+        font-family: "Ithaca";
+        src: url("/images/fonts/Ithaca.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-size: clamp(20px, 4vw, 35px) !important;
+      /* Layout Lock to prevent mobile X-Axis overflow scrolling */
+      html,
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        background-color: #fff3db;
+      }
+
+      /* Default Font Mapping - Standard Text blocks use Ithaca */
+      body,
+      p,
+      li,
+      div,
+      span,
+      button {
+        font-family: "Ithaca", monospace;
+      }
+
+      /* READABILITY CORE: Clean sizing with fixed tight letter spacing */
+      p,
+      li,
+      .card-body,
+      .btn-retro-yellow,
+      .retro-info-box text,
+      .sub-text-large {
+        font-family: "Ithaca", monospace !important;
+        font-size: clamp(21px, 2.5vw, 26px) !important;
+        line-height: 1.6 !important;
+        letter-spacing: -0.2px !important; /* Kept tight so pixel letters form readable blocks */
+      }
+
+      /* Highlight elements and badge tags */
+      .badge-sub,
+      .highlight-num {
+        font-family: "Ithaca", monospace !important;
+        font-size: clamp(22px, 2.6vw, 28px) !important;
+        letter-spacing: 0px !important;
+      }
+
+      /* HEADERS & IMPACTFUL TEXT: Russo One */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      .retro-title,
+      .font-heading,
+      .btn-retro-grid {
+        font-family: "Russo One", sans-serif !important;
+        letter-spacing: 0.5px !important;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-size: clamp(28px, 5.5vw, 44px) !important;
+      }
+
+      .retro-header {
+        background-color: #4aaae6 !important;
+        border-bottom: 5px solid #121945 !important;
+      }
+
+      /* Window titles scale neatly */
+      .retro-title {
+        font-size: clamp(16px, 2.3vw, 20px) !important;
+        text-shadow: 1px 1px 0px #121945;
+      }
+
+      .retro-window-btn {
+        background-color: #fff3db;
+        border: 4px solid #121945;
+        width: 28px;
+        height: 28px;
+        position: relative;
+        box-shadow: 3px 3px 0px 0px #121945;
+        cursor: pointer;
+      }
+
+      .retro-window-btn:active {
+        transform: translate(2px, 2px);
+        box-shadow: 1px 1px 0px 0px #121945;
+      }
+
+      .retro-dash {
+        background-color: #121945;
+        width: 12px;
+        height: 4px;
+        margin-bottom: 3px;
+      }
+
+      .retro-square {
+        border: 3px solid #121945;
+        width: 12px;
+        height: 12px;
+        display: block;
+      }
+
+      .retro-x {
+        color: #121945;
+        font-weight: 900;
+        font-size: 14px;
+        line-height: 1;
+      }
+
+      .card {
+        border: 5px solid #121945 !important;
+        border-radius: 0 !important;
+        box-shadow: 8px 8px 0px 0px #121945;
+      }
+
+      .bg-doc-blue {
+        background-color: #3b99d4 !important;
+      }
+      .bg-map-navy {
+        background-color: #1a5fa4 !important;
+      }
+
+      .text-navy {
+        color: #121945;
+      }
+      .bg-cream {
+        background-color: #fff3db;
+      }
+
+      .btn-retro-blue {
+        background-color: #55aadb;
+        color: white;
+        border: 4px solid #121945;
+        box-shadow: 4px 4px 0px #121945;
+      }
+      .btn-retro-magenta {
+        background-color: #ce3d7a;
+        color: white;
+        border: 4px solid #121945;
+        box-shadow: 4px 4px 0px #121945;
+      }
+      .btn-retro-yellow {
+        background-color: #eeae4b;
+        color: #121945;
+        border: 4px solid #121945;
+        box-shadow: 4px 4px 0px #121945;
+      }
+
+      .retro-info-box {
+        background-color: #121945;
+        color: #fff3db;
+        border: 4px solid #121945;
+        padding: 1.5rem;
+      }
+
+      .map-pin-icon {
+        transition: transform 0.15s ease;
+        transform-origin: center bottom;
+        cursor: pointer;
+      }
+
+      .map-icon-link:hover .map-pin-icon {
+        animation: pin-bounce 0.5s ease infinite alternate;
+      }
+
+      .map-icon-link:active .map-pin-icon {
+        animation: pin-drop 0.3s ease forwards;
+      }
+
+      @keyframes pin-bounce {
+        0% {
+          transform: translateY(0px);
         }
-        h1, h2, h3, h4, h5, h6, .retro-title, .font-heading {
-            font-family: 'Russo One', sans-serif !important;
+        100% {
+          transform: translateY(-5px);
         }
+      }
 
-        .retro-header {
-            background-color: #4AAAE6 !important;
-            border-bottom: 5px solid #121945 !important;
-            letter-spacing: 0.5px;
+      @keyframes pin-drop {
+        0% {
+          transform: translateY(-8px) scale(1);
         }
-
-        .retro-title {
-            font-size: clamp(10px, 2.5vw, 1.15rem);
-            text-shadow: 1px 1px 0px #121945;
+        60% {
+          transform: translateY(3px) scale(0.95);
         }
-
-        .retro-window-btn {
-            background-color: #FFF3DB;
-            border: 4px solid #121945;
-            width: 28px;
-            height: 28px;
-            position: relative;
-            box-shadow: 3px 3px 0px 0px #121945;
-            cursor: pointer;
+        100% {
+          transform: translateY(0px) scale(1);
         }
-
-        .retro-window-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px 0px #121945;
-        }
-
-        .retro-dash {
-            background-color: #121945;
-            width: 12px;
-            height: 4px;
-            margin-bottom: 3px;
-        }
-
-        .retro-square {
-            border: 3px solid #121945;
-            width: 12px;
-            height: 12px;
-            display: block;
-        }
-
-        .retro-x {
-            color: #121945;
-            font-weight: 900;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        .card {
-            border: 5px solid #121945 !important;
-            border-radius: 0 !important;
-            box-shadow: 10px 10px 0px 0px #121945;
-        }
-
-        .bg-doc-blue { background-color: #3B99D4 !important; }
-        .bg-map-navy { background-color: #1A5FA4 !important; }
-
-        .retro-window-frame {
-            border: 4px solid #121945;
-            box-shadow: 4px 4px 0px #121945;
-            border-radius: 0;
-        }
-
-        .text-navy { color: #121945; }
-        .bg-cream { background-color: #FFF3DB; }
-
-        .btn-retro-blue { background-color: #55AADB; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; }
-        .btn-retro-magenta { background-color: #CE3D7A; color: white; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945;}
-        .btn-retro-yellow { background-color: #EEAE4B; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945;}
-
-        .retro-info-box {
-            background-color: #121945;
-            color: #FFF3DB;
-            border: 4px solid #121945;
-            padding: 1.5rem;
-        }
-
-        .map-pin-icon {
-            transition: transform 0.15s ease;
-            transform-origin: center bottom;
-            cursor: pointer;
-        }
-
-        .map-icon-link:hover .map-pin-icon {
-            animation: pin-bounce 0.5s ease infinite alternate;
-        }
-
-        .map-icon-link:active .map-pin-icon {
-            animation: pin-drop 0.3s ease forwards;
-        }
-
-        @keyframes pin-bounce {
-            0%   { transform: translateY(0px); }
-            100% { transform: translateY(-5px); }
-        }
-
-        @keyframes pin-drop {
-            0%   { transform: translateY(-8px) scale(1); }
-            60%  { transform: translateY(3px) scale(0.95); }
-            100% { transform: translateY(0px) scale(1); }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body style="background-color: #FFF3DB;">
-<header id="header"></header>
+  <body>
+    <header id="header"></header>
 
-<div class="container py-4">
-
-    <!-- Card 1: За_БЕСТ.exe -->
-    <div class="card mb-5">
-        <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z" fill="#717074" stroke="#121945" stroke-width="2"/><rect x="7" y="3" width="7" height="5" fill="#FFF3DB" stroke="#121945" stroke-width="2"/><rect x="6" y="12" width="12" height="9" fill="#FFF3DB" stroke="#121945" stroke-width="2"/></svg>
-                <span class="retro-title">За_БЕСТ.exe</span>
-            </div>
-            <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
-            </div>
+    <div class="container py-4" style="overflow: hidden">
+      <!-- Card 1: За_БЕСТ.exe -->
+      <div class="card mb-5">
+        <div
+          class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2"
+        >
+          <div class="d-flex align-items-center gap-2 text-white">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19 21H5C3.89543 21 3 20.1046 3 19V5C3 3.89543 3.89543 3 5 3H16L21 8V19C21 20.1046 20.1046 21 19 21Z"
+                fill="#717074"
+                stroke="#121945"
+                stroke-width="2"
+              />
+              <rect
+                x="7"
+                y="3"
+                width="7"
+                height="5"
+                fill="#FFF3DB"
+                stroke="#121945"
+                stroke-width="2"
+              />
+              <rect
+                x="6"
+                y="12"
+                width="12"
+                height="9"
+                fill="#FFF3DB"
+                stroke="#121945"
+                stroke-width="2"
+              />
+            </svg>
+            <span class="retro-title">За_БЕСТ.exe</span>
+          </div>
+          <div class="d-flex gap-1 align-items-center pe-2">
+            <button
+              class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-dash"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-square"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-x">✕</span>
+            </button>
+          </div>
         </div>
 
-        <div class="card-body p-4 bg-white text-navy">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-5">
-                    <div class="p-4 bg-white border border-4 border-dark h-100" style="border-color: #121945 !important;">
-                        <h1 class="mb-3 text-uppercase" style="color: #CE3D7A; font-size: 3rem; font-family: 'Russo One', sans-serif;">За БЕСТ</h1>
-                        <div class="p-2 mb-4 text-dark border border-2 border-dark d-inline-block fw-semibold" style="border-color: #121945 !important; font-size: 0.95rem; letter-spacing: -0.5px; background-color: #b1ddf0">
-                            Board of European Students of Technology
-                        </div>
-                        <p class="lh-base m-0" style="font-size: 1.05rem; letter-spacing: -0.3px;">
-                            БЕСТ е непрофитна, неполитичка, невладина организација која постои од 1989 година. Се состои од студенти од технички универзитети низ Европа кои работат на унапредување на комуникацијата, соработката и размената на идеи меѓу европските студенти.
-                        </p>
+        <div class="card-body p-3 p-md-4 bg-white text-navy">
+          <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+              <div
+                class="p-3 p-md-4 bg-white border border-4"
+                style="border-color: #121945 !important"
+              >
+                <h1 class="mb-3 text-uppercase" style="color: #ce3d7a">
+                  За БЕСТ
+                </h1>
+                <div
+                  class="p-2 mb-4 text-dark border border-2 d-inline-block badge-sub"
+                  style="
+                    border-color: #121945 !important;
+                    background-color: #b1ddf0;
+                  "
+                >
+                  Board of European Students of Technology
+                </div>
+                <p class="m-0">
+                  БЕСТ е непрофитна, неполитичка, невладина организација која
+                  постои од 1989 година. Се состои од студенти од технички
+                  универзитети низ Европа кои работат на унапредување на
+                  комуникацијата, соработката и размената на идеи меѓу
+                  европските студенти.
+                </p>
+              </div>
+            </div>
+            <div class="col-lg-6 text-center position-relative">
+              <div
+                class="d-inline-block p-2 position-relative"
+                style="
+                  background-color: #eeae4b;
+                  border: 4px solid #121945;
+                  box-shadow: 8px 8px 0px 0px #121945;
+                "
+              >
+                <img
+                  src="./images/cheesy.png"
+                  alt="BEST Students"
+                  class="img-fluid d-block border border-2 border-dark rounded-0"
+                />
+                <span
+                  class="position-absolute text-warning"
+                  style="
+                    top: -12px;
+                    right: -12px;
+                    font-size: 1.5rem;
+                    text-shadow: 2px 2px 0px #121945;
+                  "
+                  >✦</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Меѓународна_Организација.doc -->
+      <div class="card mb-5">
+        <div
+          class="card-header retro-header bg-doc-blue d-flex align-items-center justify-content-between border-0 p-2"
+        >
+          <div class="d-flex align-items-center gap-2 text-white">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z"
+                fill="#FFF3DB"
+                stroke="#121945"
+                stroke-width="2"
+              />
+              <path d="M14 2V8H20" stroke="#121945" stroke-width="2" />
+            </svg>
+            <span class="retro-title">Меѓународна_Организација.doc</span>
+          </div>
+          <div class="d-flex gap-1 align-items-center pe-2">
+            <button
+              class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-dash"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-square"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-x">✕</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body p-3 p-md-4 bg-white text-navy">
+          <h1 class="mb-0 text-capitalize" style="color: #4aaae6">
+            Глобално влијание <span style="vertical-align: middle">🌍</span>
+          </h1>
+          <div class="d-flex my-3" style="height: 6px; width: 95%">
+            <div style="background-color: #ce3d7a; width: 65%"></div>
+            <div style="background-color: #121945; width: 35%"></div>
+          </div>
+          <div class="row g-4 align-items-center mt-2">
+            <div class="col-lg-6">
+              <p class="mb-3">
+                Денес, БЕСТ е претставена во повеќе од <br />
+                <span class="highlight-num" style="color: #ce3d7a">90</span>
+                универзитети во
+                <span class="highlight-num" style="color: #4aaae6">33</span>
+                земји со преку
+              </p>
+              <p class="m-0">
+                <span class="highlight-num" style="color: #eeae4b">3.000</span>
+                активни членови кои работат волонтерски за да обезбедат можности
+                за развој на студентите.
+              </p>
+            </div>
+            <div class="col-lg-6">
+              <div class="row g-3">
+                <div class="col-sm-6">
+                  <div
+                    class="p-3 text-center border border-4 border-dark h-100 rounded-0"
+                    style="
+                      background-color: #bbe2f3;
+                      border-color: #121945 !important;
+                      box-shadow: 6px 6px 0px #121945;
+                    "
+                  >
+                    <div class="mb-1" style="font-size: 1.8rem !important">
+                      🎯
                     </div>
-                </div>
-                <div class="col-lg-7 text-center position-relative">
-                    <div class="d-inline-block p-2 position-relative" style="background-color: #EEAE4B; border: 4px solid #121945; box-shadow: 8px 8px 0px 0px #121945;">
-                        <img src="./images/cheesy.png" alt="BEST Students" class="img-fluid d-block border border-2 border-dark rounded-0">
-                        <span class="position-absolute text-warning" style="top: -12px; right: -12px; font-size: 1.5rem; text-shadow: 2px 2px 0px #121945;">✦</span>
+                    <h3
+                      class="mb-2 btn-retro-grid"
+                      style="
+                        color: #121945;
+                        font-size: clamp(20px, 3vw, 24px) !important;
+                      "
+                    >
+                      Мисија
+                    </h3>
+                    <div style="color: #121945; line-height: 1.4">
+                      Поддршка на личен и професионален развој
                     </div>
+                  </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 2: Меѓународна_Организација.doc -->
-    <div class="card mb-5">
-        <div class="card-header retro-header bg-doc-blue d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14 2H6C4.89543 2 4 2.89543 4 4V20C4 21.1046 4.89543 22 6 22H18C19.1046 22 20 21.1046 20 20V8L14 2Z" fill="#FFF3DB" stroke="#121945" stroke-width="2"/><path d="M14 2V8H20" stroke="#121945" stroke-width="2"/></svg>
-                <span class="retro-title">Меѓународна_Организација.doc</span>
-            </div>
-            <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
-            </div>
-        </div>
-
-        <div class="card-body p-4 bg-white text-navy">
-            <h1 class="mb-0 text-capitalize" style="color: #4AAAE6; font-size: 2.8rem;">
-                Глобално влијание <span style="font-size: 2.4rem; vertical-align: middle;">🌍</span>
-            </h1>
-            <div class="d-flex my-3" style="height: 6px; width: 95%;">
-                <div style="background-color: #CE3D7A; width: 65%;"></div>
-                <div style="background-color: #121945; width: 35%;"></div>
-            </div>
-            <div class="row g-4 align-items-center mt-2">
-                <div class="col-lg-6" style="font-size: 1.15rem; line-height: 1.7;">
-                    <p class="mb-3">
-                        Денес, БЕСТ е претставена во повеќе од <br>
-                        <span style="color: #CE3D7A; font-size: 1.35rem;">90</span> универзитети во
-                        <span style="color: #4AAAE6; font-size: 1.35rem;">33</span> земји со преку
-                    </p>
-                    <p class="m-0">
-                        <span style="color: #EEAE4B; font-size: 1.35rem;">3.000</span> активни членови кои работат волонтерски за да обезбедат можности за развој на студентите.
-                    </p>
-                </div>
-                <div class="col-lg-6">
-                    <div class="row g-4">
-                        <div class="col-sm-6">
-                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #BBE2F3; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
-                                <div class="fs-2 mb-1">🎯</div>
-                                <h3 class="mb-2" style="color: #121945; font-size: 1.4rem;">Мисија</h3>
-                                <div class="small" style="color: #121945; line-height: 1.3;">Поддршка на личен и професионален развој</div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="p-3 text-center border border-4 border-dark h-100 rounded-0" style="background-color: #F5B7D1; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
-                                <div class="fs-2 mb-1">🏆</div>
-                                <h3 class="mb-2" style="color: #121945; font-size: 1.4rem;">Активности</h3>
-                                <div class="small" style="color: #121945; line-height: 1.3;">Курсеви, работилници, натпревари</div>
-                            </div>
-                        </div>
+                <div class="col-sm-6">
+                  <div
+                    class="p-3 text-center border border-4 border-dark h-100 rounded-0"
+                    style="
+                      background-color: #f5b7d1;
+                      border-color: #121945 !important;
+                      box-shadow: 6px 6px 0px #121945;
+                    "
+                  >
+                    <div class="mb-1" style="font-size: 1.8rem !important">
+                      🏆
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Card 3: LBG_Skopje.exe -->
-    <div class="card mb-5">
-        <div class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" fill="#FFF3DB" stroke="#121945" stroke-width="1"/>
-                </svg>
-                <span class="retro-title">LBG_Skopje.exe</span>
-            </div>
-            <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
-            </div>
-        </div>
-
-        <div class="card-body p-4 bg-white text-navy">
-            <div class="row g-4 align-items-center">
-                <div class="col-md-5 text-center">
-                    <div class="p-2 border border-4 d-inline-block position-relative rounded-0" style="background-color: #CE3D7A; border-color: #121945 !important; box-shadow: 6px 6px 0px #121945;">
-                        <img src="./images/dioklecijan.png" alt="SkopYeah Shirt" class="img-fluid d-block border border-4 border-dark rounded-0" style="border-color: #121945 !important;">
+                    <h3
+                      class="mb-2 btn-retro-grid"
+                      style="
+                        color: #121945;
+                        font-size: clamp(20px, 3vw, 24px) !important;
+                      "
+                    >
+                      Активности
+                    </h3>
+                    <div style="color: #121945; line-height: 1.4">
+                      Курсеви, работилници, натпревари
                     </div>
+                  </div>
                 </div>
-                <div class="col-md-7">
-                    <h2 class="mb-3 text-uppercase" style="color: #EEAE4B; font-size: 2.4rem;">БЕСТ Скопје</h2>
-                    <p class="lh-base mb-4" style="font-size: 1.05rem; letter-spacing: -0.2px;">
-                        Локалната БЕСТ Група Скопје е основана со цел да ги поврзе студентите од техничките факултети во Скопје со меѓународната БЕСТ заедница. Нашата група е составена од мотивирани студенти кои работат на организирање на различни активности и настани.
-                    </p>
-                    <div class="retro-info-box p-4 rounded-0" style="border: 4px solid #3B99D4 !important; background-color: #121945; color: #FFF3DB;">
-                        <div class="mb-3" style="font-size: 1.35rem; letter-spacing: 0.5px; color: #F9EDB3;">
-                            <span style="margin-right: 4px;">&gt;</span> Што нудиме?
-                        </div>
-                        <ul class="list-unstyled ps-3 m-0" style="font-size: 1.1rem; line-height: 1.8; color: #F9EDB3;">
-                            <li class="mb-1">* Образовни курсеви и работилници</li>
-                            <li class="mb-1">* Меѓународна размена на студенти</li>
-                            <li class="mb-1">* Вмрежување со компании</li>
-                            <li class="mb-1">* Развој на лидерски вештини</li>
-                            <li>* Културни и социјални активности</li>
-                        </ul>
-                        <div class="text-secondary mt-2 opacity-50 font-monospace" style="font-size: 0.9rem;">_</div>
-                    </div>
-                </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
+      </div>
 
-    <!-- Card 4: Locations.map -->
-    <div class="card mb-5">
-        <div class="card-header retro-header bg-map-navy d-flex align-items-center justify-content-between border-0 p-2">
-            <div class="d-flex align-items-center gap-2 text-white">
-            <a href="https://maps.app.goo.gl/x94SbQwCu4i8c7Sd6" target="_blank" rel="noopener noreferrer"
-            class="d-flex align-items-center gap-2 text-white text-decoration-none map-icon-link">
-                <svg class="map-pin-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z" fill="#CE3D7A" stroke="#121945" stroke-width="2"/>
-                    <circle cx="12" cy="9" r="3" fill="#FFF3DB" stroke="#121945" stroke-width="2"/>
-                </svg>
-                <span class="retro-title">Locations.map</span>
+      <!-- Card 3: LBG_Skopje.exe -->
+      <div class="card mb-5">
+        <div
+          class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2"
+        >
+          <div class="d-flex align-items-center gap-2 text-white">
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"
+                fill="#FFF3DB"
+                stroke="#121945"
+                stroke-width="1"
+              />
+            </svg>
+            <span class="retro-title">LBG_Skopje.exe</span>
+          </div>
+          <div class="d-flex gap-1 align-items-center pe-2">
+            <button
+              class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-dash"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-square"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-x">✕</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="card-body p-3 p-md-4 bg-white text-navy">
+          <div class="row g-4 align-items-center">
+            <div class="col-md-5 text-center">
+              <div
+                class="p-2 border border-4 d-inline-block position-relative rounded-0"
+                style="
+                  background-color: #ce3d7a;
+                  border-color: #121945 !important;
+                  box-shadow: 6px 6px 0px #121945;
+                "
+              >
+                <img
+                  src="./images/dioklecijan.png"
+                  alt="SkopYeah Shirt"
+                  class="img-fluid d-block border border-4 border-dark rounded-0"
+                  style="border-color: #121945 !important"
+                />
+              </div>
+            </div>
+            <div class="col-md-7">
+              <h2 class="mb-3 text-uppercase" style="color: #eeae4b">
+                БЕСТ Скопје
+              </h2>
+              <p class="mb-4">
+                Локалната БЕСТ Група Скопје е основана со цел да ги поврзе
+                студентите од техничките факултети во Скопје со меѓународната
+                БЕСТ заедница. Нашата група е составена од мотивирани студенти
+                кои работат на организирање на различни активности и настани.
+              </p>
+              <div
+                class="retro-info-box p-3 p-md-4 rounded-0"
+                style="
+                  border: 4px solid #3b99d4 !important;
+                  background-color: #121945;
+                  color: #fff3db;
+                "
+              >
+                <div
+                  class="mb-3 font-heading"
+                  style="
+                    font-size: clamp(23px, 2.8vw, 30px) !important;
+                    color: #f9edb3;
+                  "
+                >
+                  <span style="margin-right: 4px">&gt;</span> Што нудиме?
+                </div>
+                <ul
+                  class="list-unstyled ps-2 m-0"
+                  style="line-height: 2; color: #f9edb3"
+                >
+                  <li class="mb-2">* Образовни курсеви и работилници</li>
+                  <li class="mb-2">* Меѓународна размена на студенти</li>
+                  <li class="mb-2">* Вмрежување со компании</li>
+                  <li class="mb-2">* Развој на лидерски вештини</li>
+                  <li>* Културни и социјални активности</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4: Locations.map -->
+      <div class="card mb-5">
+        <!-- FIXED: Changed bg-map-navy to retro-header to match the bright blue color of the other cards -->
+        <div
+          class="card-header retro-header d-flex align-items-center justify-content-between border-0 p-2"
+        >
+          <div class="d-flex align-items-center gap-2 text-white">
+            <a
+              href="https://maps.app.goo.gl/x94SbQwCu4i8c7Sd6"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="d-flex align-items-center gap-2 text-white text-decoration-none map-icon-link"
+            >
+              <svg
+                class="map-pin-icon"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 2C8.13 2 5 5.13 5 9C5 14.25 12 22 12 22C12 22 19 14.25 19 9C19 5.13 15.87 2 12 2Z"
+                  fill="#CE3D7A"
+                  stroke="#121945"
+                  stroke-width="2"
+                />
+                <circle
+                  cx="12"
+                  cy="9"
+                  r="3"
+                  fill="#FFF3DB"
+                  stroke="#121945"
+                  stroke-width="2"
+                />
+              </svg>
+              <span class="retro-title">Locations.map</span>
             </a>
-            </div>
-            <div class="d-flex gap-1 align-items-center pe-2">
-                <button class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"><span class="retro-dash"></span></button>
-                <button class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-square"></span></button>
-                <button class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"><span class="retro-x">✕</span></button>
-            </div>
-        </div>
-        <div class="card-body p-4 bg-white text-navy text-center">
-            <a href="https://www.google.com/maps/place/Skopje/" target="_blank" rel="noopener noreferrer" class="text-decoration-none d-inline-block hover-opacity">
-                <h2 class="mb-3 text-uppercase" style="color: #121945; font-size: 2.8rem; letter-spacing: 0.5px;">
-                    Скопје и Македонија
-                </h2>
-            </a>
-
-            <div class="btn-retro-yellow py-3 px-4 mx-auto mb-4 text-center d-block rounded-0" style="max-width: 650px; color: #121945; line-height: 1.6;">
-                Главен град и најголем град на Северна Македонија.<br>Културен, економски и академски центар!
-            </div>
-
-            <div class="row g-3 max-width-container mx-auto justify-content-center">
-                <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-blue w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; letter-spacing: 0.5px;">
-                        Население
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-magenta w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; letter-spacing: 0.5px;">
-                        Универзитети
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="btn btn-retro-yellow w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="min-height: 140px; font-size: 1.1rem; color: #121945; line-height: 1.3; letter-spacing: 0.5px;">
-                        <div style="font-family: 'Russo One' !important;">Години</div>
-                        <div style="font-family: 'Russo One' !important;">Историја</div>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="btn w-100 p-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center" style="background-color: #BBE2F3; color: #121945; border: 4px solid #121945; box-shadow: 4px 4px 0px #121945; min-height: 140px; font-size: 1.1rem; font-family: 'Russo One' !important; line-height: 1.3; letter-spacing: 0.5px;">
-                        <span style="font-size: 1.6rem; margin-bottom: 4px; line-height: 1;">🇲🇰</span>
-                        Македонија
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pixel Art Callout Footer Banner Section -->
-    <div class="position-relative w-100 py-5 my-4" style="min-height: 250px; font-family: 'Montserrat', sans-serif;">
-
-        <!-- 1. Top Centered Clouds Grid (Isolated correctly via absolute top rules) -->
-        <div style="position: absolute; top: 0px; left: 50%; transform: translateX(-50%); width: 100%; max-width: 620px; z-index: 10; pointer-events: none;">
-            <img src="images/cloud.png" alt="Pixel Clouds" style="width: 100%; height: auto; display: block; image-rendering: pixelated;">
+          </div>
+          <div class="d-flex gap-1 align-items-center pe-2">
+            <button
+              class="btn retro-window-btn btn-minimize d-inline-flex align-items-end justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-dash"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-maximize d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-square"></span>
+            </button>
+            <button
+              class="btn retro-window-btn btn-close-window d-inline-flex align-items-center justify-content-center p-0 rounded-0"
+            >
+              <span class="retro-x">✕</span>
+            </button>
+          </div>
         </div>
 
-        <!-- 2. CLOUDS FOR DESKTOP ONLY (Hidden on mobile/tablet | Visible on lg and up) -->
-        <div class="d-none d-lg-block" style="position: absolute; top: -34%; left: 50%; transform: translateX(-50%); width: 100%; max-width: 620px; z-index: 10; pointer-events: none;">
-            <img src="images/cloud.png" alt="Pixel Clouds" style="width: 100%; height: auto; display: block; image-rendering: pixelated;">
+        <div class="card-body p-3 p-md-4 bg-white text-navy text-center">
+          <a
+            href="https://www.google.com/maps/place/Skopje/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-decoration-none d-inline-block hover-opacity"
+          >
+            <h2 class="mb-3 text-uppercase" style="color: #121945">
+              Скопје и Македонија
+            </h2>
+          </a>
+
+          <div
+            class="btn-retro-yellow py-3 px-3 mx-auto mb-4 text-center d-block rounded-0 sub-text-large"
+            style="max-width: 760px; color: #121945"
+          >
+            Главен град и најголем град на Северна Македонија.<br />Културен,
+            економски и академски центар!
+          </div>
+
+          <div
+            class="row g-3 mx-auto justify-content-center"
+            style="max-width: 860px"
+          >
+            <!-- Block 1: НАСЕЛЕНИЕ -->
+            <div class="col-6 col-md-3">
+              <div
+                class="btn btn-retro-blue btn-retro-grid w-100 p-2 p-md-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center"
+                style="
+                  min-height: 120px;
+                  font-family: &quot;Russo One&quot;, sans-serif !important;
+                  font-size: clamp(16px, 1.8vw, 21px) !important;
+                  letter-spacing: 0px !important;
+                "
+              >
+                Население
+              </div>
+            </div>
+
+            <!-- Block 2: УНИВЕРЗИТЕТИ -->
+            <div class="col-6 col-md-3">
+              <div
+                class="btn btn-retro-magenta btn-retro-grid w-100 p-2 p-md-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center"
+                style="
+                  min-height: 120px;
+                  font-family: &quot;Russo One&quot;, sans-serif !important;
+                  font-size: clamp(16px, 1.8vw, 21px) !important;
+                  letter-spacing: 0px !important;
+                "
+              >
+                Универзитети
+              </div>
+            </div>
+
+            <!-- Block 3: ГОДИНИ ИСТОРИЈА (Fixed for perfect consistency) -->
+            <div class="col-6 col-md-3">
+              <div
+                class="btn btn-retro-yellow btn-retro-grid w-100 p-2 p-md-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center text-center"
+                style="
+                  min-height: 120px;
+                  color: #121945;
+                  line-height: 1.2;
+                  font-family: &quot;Russo One&quot;, sans-serif !important;
+                  font-size: clamp(16px, 1.8vw, 21px) !important;
+                  letter-spacing: 0px !important;
+                "
+              >
+                Години<br />Историја
+              </div>
+            </div>
+
+            <!-- Block 4: МАКЕДОНИЈА -->
+            <div class="col-6 col-md-3">
+              <div
+                class="btn btn-retro-grid w-100 p-2 p-md-3 rounded-0 text-uppercase d-flex flex-column align-items-center justify-content-center"
+                style="
+                  background-color: #bbe2f3;
+                  color: #121945;
+                  border: 4px solid #121945;
+                  box-shadow: 4px 4px 0px #121945;
+                  min-height: 120px;
+                  line-height: 1.3;
+                  font-family: &quot;Russo One&quot;, sans-serif !important;
+                  font-size: clamp(16px, 1.8vw, 21px) !important;
+                  letter-spacing: 0px !important;
+                "
+              >
+                <span
+                  style="font-size: 1.5rem; margin-bottom: 2px; line-height: 1"
+                  >🇲🇰</span
+                >
+                Македонија
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Pixel Art Callout Footer Banner Section -->
+      <div class="row mx-0 justify-content-center">
+        <div
+          class="col-12 px-0 position-relative py-5 my-4"
+          style="min-height: 250px; max-width: 860px"
+        >
+          <div
+            class="w-100 position-relative"
+            style="
+              background-color: #121945;
+              border: 4px solid #4aaae6;
+              z-index: 20;
+              box-sizing: border-box;
+            "
+          >
+            <!-- 1. CLOUDS FOR MOBILE ONLY -->
+            <div
+              class="d-block d-lg-none"
+              style="
+                position: absolute;
+                top: -45px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                max-width: 620px;
+                z-index: 10;
+                pointer-events: none;
+              "
+            >
+              <img
+                src="images/cloud.png"
+                alt="Pixel Clouds"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  image-rendering: pixelated;
+                "
+              />
+            </div>
+
+            <!-- 2. CLOUDS FOR DESKTOP ONLY -->
+            <div
+              class="d-none d-lg-block"
+              style="
+                position: absolute;
+                top: -28%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                max-width: 620px;
+                z-index: 10;
+                pointer-events: none;
+              "
+            >
+              <img
+                src="images/cloud.png"
+                alt="Pixel Clouds"
+                style="
+                  width: 100%;
+                  height: auto;
+                  display: block;
+                  image-rendering: pixelated;
+                "
+              />
+            </div>
 
             <div class="p-4 p-md-5 text-center">
-                <h2 class="fw-bold text-white m-0 text-uppercase" style="font-size: calc(1.1rem + 1vw); letter-spacing: 1px; line-height: 1.4;">
-                    Придружете ни се во градењето на подобра иднина! 🚀
-                </h2>
+              <h2
+                class="m-0 text-uppercase font-heading"
+                style="
+                  color: #bbe2f3;
+                  font-size: calc(1.3rem + 1vw);
+                  line-height: 1.5;
+                "
+              >
+                Придружете ни се во градењето на подобра иднина! 🚀
+              </h2>
             </div>
 
-        <div style="position: absolute; bottom: -12px; left: -20px; width: 90px; height: 50px; z-index: 30; pointer-events: none;">
-            <img src="images/wave.png" alt="Pixel Wave" style="width: 100%; height: 100%; object-fit: contain; display: block; image-rendering: pixelated;">
-        </div>
+            <!-- 3. Bottom Left Corner Crashing Wave Image -->
+            <!-- Fluid & Responsive Pixel Wave Component (Halved Sizing) -->
+            <div class="position-absolute" 
+     style="
+        z-index: 30; 
+        pointer-events: none;
+        --base-bottom: -6px; --base-left: -10px; --base-width: 90px; --add-vw: 7.5vw; --max-w: 170px; --min-w: 96px;
+        bottom: calc(var(--base-bottom) - 0.5vw); 
+        left: calc(var(--base-left) - 1vw); 
+        width: calc(var(--base-width) + var(--add-vw)); 
+        max-width: var(--max-w); 
+        min-width: var(--min-w);
+     ">
+    <style scoped>
+        @media (max-width: 767.98px) {
+            .position-absolute[style*="--base-width"] {
+                --base-bottom: -5px !important;
+                --base-left: -8px !important;
+                --base-width: 60px !important;
+                --add-vw: 5vw !important;
+                --max-w: 110px !important;
+                --min-w: 65px !important;
+            }
+        }
+    </style>
+    <img src="images/wave.png" 
+         alt="Pixel Wave" 
+         class="w-100 h-auto d-block" 
+         style="image-rendering: pixelated; object-fit: contain;" 
+    />
+</div>
 
-        <div style="position: absolute; top: -45px; right: -30px; width: 95px; height: 95px; z-index: 30; pointer-events: none;">
-            <img src="images/flower.png" alt="Pixel Lily" style="width: 100%; height: 100%; object-fit: contain; display: block; image-rendering: pixelated;">
-        </div>
+            <!-- 4. Top Right Corner Blossom Lily Image -->
+            <div
+              style="
+                position: absolute;
+                top: -45px;
+                right: 0px;
+                width: 85px;
+                height: 85px;
+                z-index: 30;
+                pointer-events: none;
+              "
+            >
+              <img
+                src="images/flower.png"
+                alt="Pixel Lily"
+                style="
+                  width: 100%;
+                  height: 100%;
+                  object-fit: contain;
+                  display: block;
+                  image-rendering: pixelated;
+                "
+              />
+            </div>
+          </div>
 
+          <!-- 5. Double Light Blue Lower Base Border Accent Line -->
+          <div
+            class="w-100"
+            style="
+              height: 5px;
+              background-color: #4aaae6;
+              margin: 4px auto 0 auto;
+            "
+          ></div>
+        </div>
+      </div>
     </div>
 
-    <div class="mx-auto" style="max-width: 860px; height: 5px; background-color: #4AAAE6; margin: 4px auto 0 auto;"></div>
-</div>
-
-</div>
-
-<footer id="footer"></footer>
-</body>
+    <footer id="footer"></footer>
+  </body>
 </html>
