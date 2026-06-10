@@ -1,34 +1,76 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BEST Skopje - Retro Header</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-    <ul class="marking h4 mb-0 p-4 text-center">
-        <li class="d-inline-block mx-3"><a href="https://best.eu.org/courses/welcome.jsp"><img alt="..."
-                    src="./images/BEST_Course_logo.svg" height="40em" width="auto"></a></li>
-        <li class="d-inline-block mx-3"><a href="./index.html">Home</a></li>
-        <li class="d-inline-block mx-3 dropdown">
-            <a href="./organizers.html">Course</a>
-            <div class="dropdown-content">
-                <a href="./participants.html">Participants</a>
-                <a href="./organizers.html">Organizers</a>
-                <a href="./about.html">BEST Skopje</a>
-            </div>
-        </li>
-        <li class="d-inline-block mx-3"><a href="./schedule.html">Schedule</a></li>
-        <li class="d-inline-block mx-3"><a href="./survival-guide.html">Survival Guide</a></li>
-        <li class="d-inline-block mx-3 dropdown">
-            <a href="./academic-partners.html">Partners</a>
-            <div class="dropdown-content">
-                <a href="./academic-partners.html">Academic Partners</a>
-                <a href="./annual-partners.html">Annual Partners</a>
-                <a href="./media-partners.html">Media Partners</a>  
-                <a href="./sponsors.html">Sponsors</a>
-            </div>
-        </li>
 
+    <header class="retro-header">
+        
+        <div class="logo-left">
+            <a href="https://best.eu.org/courses/welcome.jsp">
+                <img alt="BEST Courses" src="./images/BEST_Course_logo.svg" class="header-logo">
+            </a>
+        </div>
 
-        <li class="d-inline-block mx-3"><a href="https://best.org.mk/"><img alt="BEST Skopje Logo"
-                    src="./images/best-skopje-logo.png" height="80em" width="auto"></a></li>
-    </ul>
+        <div class="hamburger" id="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <nav class="retro-nav" id="nav-menu">
+            <ul class="retro-nav-links ithaca-font">
+                <li><a href="./index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="./organizers.html">Course</a>
+                    <div class="dropdown-content">
+                        <a href="./participants.html">Participants</a>
+                        <a href="./organizers.html">Organizers</a>
+                        <a href="./about.html">BEST Skopje</a>
+                    </div>
+                </li>
+                <li><a href="./schedule.html">Schedule</a></li>
+                <li><a href="./survival-guide.html">Survival Guide</a></li>
+                <li class="dropdown">
+                    <a href="./academic-partners.html">Partners</a>
+                    <div class="dropdown-content">
+                        <a href="./academic-partners.html">Academic Partners</a>
+                        <a href="./annual-partners.html">Annual Partners</a>
+                        <a href="./media-partners.html">Media Partners</a>  
+                        <a href="./sponsors.html">Sponsors</a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="logo-right">
+            <a href="https://best.org.mk/">
+                <img alt="BEST Skopje Logo" src="./images/best-skopje-logo.png" class="header-logo">
+            </a>
+        </div>
+
+        <div class="clouds-container">
+            <img src="images/large-cloud.png" alt="" class="cloud cloud-1">
+            <img src="images/small-cloud.png" alt="" class="cloud cloud-2">
+            <img src="images/medium-cloud.png" alt="" class="cloud cloud-3">
+        </div>
+
+    </header>
+
+    <script>
+        document.getElementById('hamburger-icon').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('active');
+        });
+    </script>
+
 </body>
-
 </html>

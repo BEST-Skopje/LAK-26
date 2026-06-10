@@ -380,3 +380,166 @@ body {
     text-align: center;
     background-color: transparent;
 }
+@font-face {
+    font-family: 'Ithaca';
+    src: url('./fonts/Ithaca.ttf'); /* Името и патеката мора да се 100% точни */
+}
+
+/* ==========================================================================
+   RETRO HEADER STYLES (Додадено според дизајнот)
+   ========================================================================== */
+
+.retro-header {
+    background-color: var(--retro-teal);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    position: relative;
+    margin-bottom: 60px; /* Остава простор облаците да "висат" */
+}
+
+.header-logo {
+    height: 60px; /* Прилагоди според вистинската големина на SVG/PNG */
+    width: auto;
+    z-index: 5;
+    position: relative;
+}
+
+.retro-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    z-index: 5;
+}
+
+.retro-nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 3.5rem; /* Зголемен простор помеѓу линковите според фидбекот */
+}
+
+.retro-nav-links li a {
+    font-family: 'Russo One', monospace !important;
+    color: var(--retro-darkblue);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    letter-spacing: 2px; /* Ептен малку проширен текст */
+    text-transform: uppercase;
+}
+
+.retro-nav-links li a:hover {
+    color: white; /* Лесен hover ефект */
+}
+
+/* Прилагодување на постоечкиот Dropdown за новиот хедер */
+.retro-header .dropdown-content {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid var(--retro-darkblue);
+    border-radius: 0; /* Остар ретро изглед */
+    box-shadow: 4px 4px 0px var(--retro-pink); /* Мал ретро детаљ */
+}
+
+/* --- КОНТЕЈНЕР ЗА ОБЛАЦИ --- */
+.clouds-container {
+    position: absolute;
+    bottom: -28px; /* Ги позиционира на самата граница со белата позадина */
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0 10%;
+    pointer-events: none; /* Овозможува кликање низ нив доколку преклопуваат нешто */
+    z-index: 2;
+}
+
+.cloud {
+    image-rendering: pixelated; /* Многу важно: го задржува пиксел арт изгледот */
+    height: auto;
+}
+
+/* Позиционирање на конкретните облаци за да личи на дизајнот */
+.cloud-1 { height: 45px; margin-left: 5%; }
+.cloud-2 { height: 20px; margin-left: auto; margin-right: 15%; margin-bottom: 10px;}
+.cloud-3 { height: 35px; margin-right: 5%; }
+
+/* --- HAMBURGER MENU (MOBILE) --- */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.hamburger span {
+    width: 35px;
+    height: 5px;
+    background-color: var(--retro-darkblue);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 992px) {
+    .retro-header {
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .retro-nav {
+        display: none; /* Сокриено по дифолт на мобилен */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--retro-teal);
+        flex-direction: column;
+        padding: 0;
+        border-bottom: 4px solid var(--retro-darkblue);
+        box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .retro-nav.active {
+        display: flex;
+    }
+
+    .retro-nav-links {
+        flex-direction: column;
+        gap: 0;
+        width: 100%;
+    }
+    
+    .retro-nav-links li {
+        width: 100%;
+        text-align: center;
+        padding: 15px 0;
+        border-top: 2px solid rgba(44, 46, 119, 0.2); /* Суптилна линија помеѓу линковите */
+    }
+
+    .clouds-container {
+        bottom: -15px; 
+    }
+    
+    .cloud {
+        transform: scale(0.7); /* Помали облаци на телефон */
+    }
+    
+    .retro-header .dropdown-content {
+        position: static; /* Да не лебди на мобилен, туку да се отвори надолу */
+        transform: none;
+        width: 90%;
+        margin: 10px auto 0 auto;
+        box-shadow: none;
+    }
+}
