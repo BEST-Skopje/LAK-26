@@ -1,18 +1,23 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta name="keywords"
-        content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje" />
+        content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST, Academic Course 2026, BEST Summer Course Skopje, Skopje" />
 
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
     <title>Academic Partners - BEST Course in Summer 2026</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 
@@ -23,47 +28,183 @@
                 var page = path.split("/").pop().split(".html")[0];
                 $("#" + page).addClass("active");
             });
+
             $("#footer").load("footer.html");
         });
     </script>
+
 </head>
 
 <body>
     <header id="header"></header>
 
-    <div class="container-fluid p-0 bg-white">
+    <main class="academic-partners-page position-relative overflow-hidden py-5">
 
+        <!-- Decorations -->
+        <!-- Change these src paths to the real names of your element images -->
+        <img src="./images/elements/cloud-1.png"
+            class="pixel-decoration hide-mobile"
+            alt=""
+            style="width: 260px; top: 5rem; left: 3%; opacity: 0.9;">
 
+        <img src="./images/elements/cloud-2.png"
+            class="pixel-decoration hide-mobile"
+            alt=""
+            style="width: 350px; top: 8rem; right: 3%; opacity: 0.9;">
 
-        <section id="partners" class="pt-4 pb-2">
-            <div class="row justify-content center mx-0">
-                <h2 class="blue-text text-center">FACULTY OF COMPUTER SCIENCE AND ENGINEERING</h2>
-                <img class="divider-mark" alt="..." src="./images/divider.png">
-            </div>
-            <div class="row my-4 mx-0">
-                <img src="./images/partner-logos/finki_logo.webp" alt="GFS-logo" class=" gfs-logo mx-auto" style="height: 50%; width: 30%;">
-            </div>
-            <div class="h6 text-center my-4 px-5 mx-auto w-75">
-                <p>
-The Faculty of Computer Science and Engineering (FCSE) at Ss. Cyril and Methodius University in Skopje was established in 2011 through the unification of the two largest institutions in the field of informatics and computer technologies in Macedonia: the Institute of Informatics (II) at the Faculty of Natural Sciences and Mathematics and the Institute of Computer Technics and Informatics (ICTI) at the Faculty of Electrical Engineering and Information Technologies.                    
-<br><br>Both institutes have been active since the 1980s, with the Institute of Informatics founded in 1985, and ICTI originating from the Cathedrae of Technical Cybernetics, which was promoted to an institute after its initial establishment as a department in 1982. Over several decades, the two institutes developed strong educational and research capacities, supported by growing student interest and continuous scientific activity.
-<br><br>Long-term collaboration, joint research projects, and shared academic goals led to their formal unification, resulting in the creation of FCSE as a central institution for education and research in informatics and computer engineering in Macedonia. 
-<br><br><strong>
-                        Mission of FCSE <br>
-                    </strong>
-To provide education and research in computer science and engineering, supporting the development of qualified professionals and contributing to the advancement of information and communication technologies.                    <br><br>
-                    <strong>
-                        Vision 
-                    </strong>
-                    <br>
-To strengthen its position as a leading academic institution in computer science and engineering, while supporting international cooperation, knowledge exchange, and technological development.                </p>
-            </div>
-            <div class="text-center links">
-                <a href="https://www.finki.ukim.mk/en" class="fs-4" tar>Link to faculty</a>
-                <!-- <a href="#">Link</a>
-                <a href="#">Link</a> -->
-            </div>
-    </div>
+        <img src="./images/elements/flower-1.png"
+            class="pixel-decoration hide-mobile"
+            alt=""
+            style="width: 95px; top: 23rem; left: 6%; transform: rotate(-12deg); z-index: 4;">
+
+        <img src="./images/elements/flower-2.png"
+            class="pixel-decoration hide-mobile"
+            alt=""
+            style="width: 85px; top: 28rem; right: 7%; transform: rotate(10deg); z-index: 4;">
+
+        <img src="./images/elements/cursor.png"
+            class="pixel-decoration hide-mobile"
+            alt=""
+            style="width: 75px; top: 47%; right: 18%; transform: rotate(-8deg); z-index: 4;">
+
+        <img src="./images/elements/building-1.png"
+            class="pixel-decoration bottom-0 start-0 hide-mobile"
+            alt=""
+            style="width: 150px; z-index: 2;">
+
+        <img src="./images/elements/building-2.png"
+            class="pixel-decoration bottom-0 end-0 hide-mobile"
+            alt=""
+            style="width: 180px; z-index: 2;">
+
+        <img src="./images/elements/bus.png"
+            class="pixel-decoration bottom-0 hide-mobile"
+            alt=""
+            style="width: 270px; right: 10%; z-index: 3;">
+
+        <img src="./images/elements/wave-1.png"
+            class="pixel-decoration bottom-0 start-50 translate-middle-x"
+            alt=""
+            style="width: 240px; margin-bottom: 3.5rem; opacity: 0.9; z-index: 2;">
+
+        <img src="./images/elements/wave-2.png"
+            class="pixel-decoration bottom-0 hide-mobile"
+            alt=""
+            style="width: 180px; left: calc(50% - 260px); margin-bottom: 5rem; opacity: 0.9; z-index: 2;">
+
+        <!-- Main content -->
+        <div class="container main-content">
+
+            <section id="partners" class="text-center">
+
+                <div class="row justify-content-center mb-4">
+                    <div class="col-12 col-lg-10">
+
+                        <p class="retro-small-heading small mb-2">
+                            ACADEMIC PARTNER
+                        </p>
+
+                        <h1 class="retro-heading display-4 mb-3">
+                            FACULTY OF COMPUTER SCIENCE<br class="d-none d-md-block">
+                            AND ENGINEERING
+                        </h1>
+
+                        <img class="divider-mark mb-3"
+                            src="./images/divider.png"
+                            alt="divider"
+                            style="height: 2rem; width: auto;">
+                    </div>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-11 col-xl-10">
+
+                        <div class="retro-window text-start">
+
+                            <div class="retro-window-bar d-flex justify-content-between align-items-center px-3 py-2">
+                                <span>fcse_partner.exe</span>
+
+                                <div class="d-flex gap-2">
+                                    <span class="retro-btn d-inline-block"></span>
+                                    <span class="retro-btn d-inline-block"></span>
+                                    <span class="retro-btn d-inline-block"></span>
+                                </div>
+                            </div>
+
+                            <div class="p-3 p-md-5">
+
+                                <div class="row justify-content-center mb-5">
+                                    <div class="col-11 col-md-8 col-lg-6">
+                                        <div class="partner-logo-box p-3 p-md-4">
+                                            <img src="./images/partner-logos/finki_logo.webp"
+                                                alt="Faculty of Computer Science and Engineering logo"
+                                                class="img-fluid d-block mx-auto">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <div class="col-12 text-center fs-4">
+
+                                        <p>
+                                            The Faculty of Computer Science and Engineering (FCSE) at Ss. Cyril and Methodius University in Skopje was established in 2011 through the unification of the two largest institutions in the field of informatics and computer technologies in Macedonia: the Institute of Informatics (II) at the Faculty of Natural Sciences and Mathematics and the Institute of Computer Technics and Informatics (ICTI) at the Faculty of Electrical Engineering and Information Technologies.
+                                        </p>
+
+                                        <p>
+                                            Both institutes have been active since the 1980s, with the Institute of Informatics founded in 1985, and ICTI originating from the Cathedrae of Technical Cybernetics, which was promoted to an institute after its initial establishment as a department in 1982. Over several decades, the two institutes developed strong educational and research capacities, supported by growing student interest and continuous scientific activity.
+                                        </p>
+
+                                        <p>
+                                            Long-term collaboration, joint research projects, and shared academic goals led to their formal unification, resulting in the creation of FCSE as a central institution for education and research in informatics and computer engineering in Macedonia.
+                                        </p>
+
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-center g-4 mt-2">
+
+                                    <div class="col-12 col-lg-6">
+                                        <div class="retro-card h-100 p-4 text-center">
+                                            <h2 class="retro-small-heading h5 mb-3">
+                                                Mission of FCSE
+                                            </h2>
+
+                                            <p class="mb-0">
+                                                To provide education and research in computer science and engineering, supporting the development of qualified professionals and contributing to the advancement of information and communication technologies.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12 col-lg-6">
+                                        <div class="retro-card h-100 p-4 text-center">
+                                            <h2 class="retro-small-heading h5 mb-3">
+                                                Vision
+                                            </h2>
+
+                                            <p class="mb-0">
+                                                To strengthen its position as a leading academic institution in computer science and engineering, while supporting international cooperation, knowledge exchange, and technological development.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="text-center mt-5">
+                                    <a href="https://www.finki.ukim.mk/en"
+                                        target="_blank"
+                                        class="retro-link d-inline-block px-4 py-2 fs-4">
+                                        Link to faculty
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
 
     <footer id="footer"></footer>
 </body>

@@ -1,3 +1,13 @@
+:root {
+    --summer-pink: #F77BB7;
+    --summer-blue: #68C1D3;
+    --summer-light-blue: #A1CCFF;
+    --summer-dark-blue: #2C2E77;
+    --summer-cream: #F1DFAE;
+    --summer-hot-pink: #CF3A77;
+	--summer-berry: #5A2149;
+}
+
 body {
 	background-color: white;
 	font-family: "Montserrat";
@@ -71,7 +81,7 @@ body {
 
 /* Organisers page */
 .organisers-page {
-    background-color: #A1CCFF;
+    background-color: var(--summer-light-blue);
     color: #2C2E77;
     font-family: "Ithaca", "Montserrat", sans-serif;
     isolation: isolate;
@@ -387,6 +397,106 @@ body {
     }
 }
 
+/* Academic partners page */
+
+        .academic-partners-page {
+    		min-height: 100vh;
+    		background:
+       			linear-gradient(180deg, rgba(161, 204, 255, 0.95), rgba(241, 223, 174, 0.95));
+    		color: var(--summer-dark-blue);
+    		font-family: "Ithaca", "Montserrat", sans-serif;
+    		isolation: isolate;
+			font-size: 1.3rem;
+}
+
+        .retro-heading {
+            font-family: "Russo One", sans-serif;
+            color: var(--summer-dark-blue);
+            letter-spacing: 0.06em;
+            text-shadow: 5px 5px 0 var(--summer-pink);
+        }
+
+        .retro-small-heading {
+            font-family: "Russo One", sans-serif;
+            color: var(--summer-hot-pink);
+            letter-spacing: 0.12em;
+        }
+
+        .retro-window {
+            border: 4px solid var(--summer-dark-blue);
+            box-shadow: 12px 12px 0 var(--summer-blue);
+            background-color: var(--summer-cream);
+        }
+
+        .retro-window-bar {
+    background-color: var(--summer-pink);
+    border-bottom: 4px solid var(--summer-dark-blue);
+    font-family: "Ithaca", "Montserrat", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+        .retro-btn {
+            width: 22px;
+            height: 22px;
+            background-color: var(--summer-cream);
+            border: 3px solid var(--summer-dark-blue);
+        }
+
+        .retro-card {
+            background-color: var(--summer-light-blue);
+            border: 3px solid var(--summer-dark-blue);
+            box-shadow: 7px 7px 0 var(--summer-pink);
+        }
+
+        .retro-link {
+    font-family: "Ithaca", "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--summer-berry);
+    background-color: var(--summer-pink);
+    border: 4px solid var(--summer-dark-blue);
+    box-shadow: 6px 6px 0 var(--summer-blue);
+    text-decoration: none;
+}
+
+        .retro-link:hover {
+            color: var(--summer-dark-blue);
+            background-color: var(--summer-cream);
+        }
+
+        .pixel-decoration {
+            position: absolute;
+            image-rendering: pixelated;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .partner-logo-box {
+            background-color: white;
+            border: 4px solid var(--summer-dark-blue);
+            box-shadow: 8px 8px 0 var(--summer-pink);
+        }
+
+        .divider-mark {
+            image-rendering: pixelated;
+        }
+
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+
+            .retro-window {
+                box-shadow: 7px 7px 0 var(--summer-blue);
+            }
+        }
 
 #get-to-know-us {
 	background-color: #205cc6;
