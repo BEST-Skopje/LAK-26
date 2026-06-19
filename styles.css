@@ -400,7 +400,7 @@ body {
 }
 
 .header-logo {
-    height: 60px; /* Прилагоди според вистинската големина на SVG/PNG */
+    height: clamp(30px, 5vw, 60px);
     width: auto;
     z-index: 5;
     position: relative;
@@ -465,10 +465,10 @@ body {
     height: auto;
 }
 
-/* Позиционирање на конкретните облаци за да личи на дизајнот */
-.cloud-1 { height: 45px; margin-left: 5%; }
-.cloud-2 { height: 20px; margin-left: auto; margin-right: 15%; margin-bottom: 10px;}
-.cloud-3 { height: 35px; margin-right: 5%; }
+
+.cloud-1 { height: clamp(20px, 4vw, 45px); margin-left: 5%; }
+.cloud-2 { height: clamp(10px, 2vw, 20px); margin-left: auto; margin-right: 15%; margin-bottom: 10px; }
+.cloud-3 { height: clamp(15px, 3vw, 35px); margin-right: 5%; }
 
 /* --- HAMBURGER MENU (MOBILE) --- */
 .hamburger {
@@ -531,9 +531,7 @@ body {
         bottom: -15px; 
     }
     
-    .cloud {
-        transform: scale(0.7); /* Помали облаци на телефон */
-    }
+    
     
     .retro-header .dropdown-content {
         position: static; /* Да не лебди на мобилен, туку да се отвори надолу */
