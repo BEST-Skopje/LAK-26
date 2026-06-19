@@ -18,7 +18,7 @@
         $(document).ready(function () {
             $("#header").load("header.html", function () {
                 var path = window.location.pathname;
-                var page = path.split("/").pop().split(".html")[0];
+                var page = path.split("/").pop().split(".body")[0];
                 $("#" + page).addClass("active");
             });
             $("#footer").load("footer.html");
