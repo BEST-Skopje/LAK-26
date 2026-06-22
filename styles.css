@@ -267,26 +267,38 @@ body {
 }
 
 /* CO-ORGANISERS flowers */
+.organisers-page section:nth-of-type(1) .org-section-flower-left {
+    left: calc(50% - 350px);
+    transform: translateY(-50%) rotate(-12deg);
+}
+
+.organisers-page section:nth-of-type(1) .org-section-flower-right {
+    right: calc(50% - 354px);
+    transform: translateY(-50%) rotate(10deg);
+}
+
 .organisers-page section:nth-of-type(2) .org-section-flower-left {
-    left: calc(50% - 380px);
+    left: calc(50% - 260px);
     transform: translateY(-50%) rotate(-12deg);
 }
 
 .organisers-page section:nth-of-type(2) .org-section-flower-right {
-    right: calc(50% - 380px);
+    right: calc(50% - 260px);
     transform: translateY(-50%) rotate(10deg);
 }
 
 /* BOARD flowers */
 .organisers-page section:nth-of-type(3) .org-section-flower-left {
-    left: calc(50% - 210px);
+    left: calc(50% - 170px);
     transform: translateY(-50%) rotate(-12deg);
 }
 
 .organisers-page section:nth-of-type(3) .org-section-flower-right {
-    right: calc(50% - 210px);
+    right: calc(50% - 170px);
     transform: translateY(-50%) rotate(10deg);
 }
+
+
 
 /* Make sure title stays above flowers */
 .organisers-title,
@@ -364,9 +376,33 @@ body {
 
 @media (max-width: 576px) {
     .org-section-flower {
-        display: none;
+        display: block;
+        width: 40px;
     }
 
+    /* Section 1 (Core Team) - push flowers further from text */
+    .organisers-page section:nth-of-type(1) .org-section-flower-left {
+        left: 0.01rem;
+    }
+    .organisers-page section:nth-of-type(1) .org-section-flower-right {
+        right: 0.01rem;
+    }
+
+    /* Section 2 (Co-organisers) - bring flowers closer to text */
+    .organisers-page section:nth-of-type(2) .org-section-flower-left {
+        left: calc(50% - 173px);
+    }
+    .organisers-page section:nth-of-type(2) .org-section-flower-right {
+        right: calc(50% - 173px);
+    }
+
+    /* Section 3 (Board) - bring flowers closer to text */
+    .organisers-page section:nth-of-type(3) .org-section-flower-left {
+        left: calc(50% - 100px);
+    }
+    .organisers-page section:nth-of-type(3) .org-section-flower-right {
+        right: calc(50% - 100px);
+    }
     .org-wave-1,
     .org-wave-2 {
         display: none;
