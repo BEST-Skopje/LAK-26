@@ -388,12 +388,13 @@ body {
     }
 
     .org-cloud-1 {
-        width: 160px;
-        top: 1rem;
+        width: 120px;
+        top: 0.8rem;
     }
 
     .org-cloud-2 {
-        display: none;
+        width: 60px;
+        top: 0.8rem;
     }
 }
 
