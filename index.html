@@ -1,4 +1,5 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -7,7 +8,7 @@
     <meta name="keywords"
         content="Summer Course '25, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2025, BEST Summer Course Skopje, Skopje" />
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
     <title>BEST Course in Summer 2026</title>
@@ -18,66 +19,638 @@
         $(document).ready(function () {
             $("#header").load("header.html", function () {
                 var path = window.location.pathname;
-                var page = path.split("/").pop().split(".body")[0];
-                $("#" + page).addClass("active");
+                var page = path.split("/").pop().split(".html")[0];
+                if (page === "" || page === "index") {
+                    $("#index").addClass("active");
+                } else {
+                    $("#" + page).addClass("active");
+                }
             });
             $("#footer").load("footer.html");
+
+            // --- REAL COUNTDOWN TIMER & PROGRESS LOGIC ---
+            const targetDate = new Date("July 5, 2026 00:00:00").getTime();
+            const startDate = new Date("May 5, 2026 00:00:00").getTime();
+            const totalDuration = targetDate - startDate;
+
+            const timerInterval = setInterval(function() {
+                const now = new Date().getTime();
+                const difference = targetDate - now;
+
+                if (difference <= 0) {
+                    clearInterval(timerInterval);
+                    $("#days").text("00");
+                    $("#hours").text("00");
+                    $("#minutes").text("00");
+                    $(".loading-bar-fill").css("width", "100%");
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+
+                $("#days").text(days.toString().padStart(2, '0'));
+                $("#hours").text(hours.toString().padStart(2, '0'));
+                $("#minutes").text(minutes.toString().padStart(2, '0'));
+
+                let timeElapsed = now - startDate;
+                let progressPercent = (timeElapsed / totalDuration) * 100;
+                
+                progressPercent = Math.max(0, Math.min(progressPercent, 100)); 
+                $(".loading-bar-fill").css("width", progressPercent + "%");
+            }, 1000);
+
+            // --- INTERACTIVE RETRO WINDOW CONTROLS (ONLY TARGETS RECTANGLE WINDOWS NOW) ---
+            $(".btn-minimize").click(function() {
+                var windowBox = $(this).closest(".retro-window");
+                windowBox.find(".retro-window-body").slideToggle(200);
+            });
+
+            $(".btn-maximize").click(function() {
+                var windowBox = $(this).closest(".retro-window");
+                windowBox.toggleClass("window-maximized");
+                
+                if ($(".window-maximized").length > 0) {
+                    $("body").addClass("body-scroll-lock");
+                } else {
+                    $("body").removeClass("body-scroll-lock");
+                }
+
+                var innerBody = windowBox.find(".retro-window-body");
+                if(innerBody.is(":hidden")) {
+                    innerBody.show();
+                }
+            });
+
+            $(".btn-close").click(function() {
+                var windowBox = $(this).closest(".retro-window");
+                windowBox.fadeOut(300, function() {
+                    $(this).remove();
+                    if ($(".window-maximized").length === 0) {
+                        $("body").removeClass("body-scroll-lock");
+                    }
+                });
+            });
         });
     </script>
+
+    <style>
+        /* --- CUSTOM RETRO PIXEL FLOWER SCROLLBAR --- */
+        ::-webkit-scrollbar {
+            width: 16px; 
+            background-color: #fdf5e6; 
+            border-left: 2px solid #000; 
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: #F1DFAE; 
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #F77BB7; 
+            border: 2px solid #000; 
+            box-shadow: inset -2px -2px 0px rgba(0,0,0,0.2); 
+            background-image: url('./images/flower.png'); 
+            background-repeat: repeat-y; 
+            background-position: center center;
+            background-size: 12px auto; 
+            image-rendering: pixelated; 
+            cursor: pointer;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #ff527b; 
+        }
+
+        html {
+            scrollbar-width: auto;
+            scrollbar-color: #F77BB7 #F1DFAE; 
+        }
+
+        /* --- Scroll Lock Helper Class --- */
+        body.body-scroll-lock {
+            overflow: hidden !important;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* --- Base Canvas Setup --- */
+        .pixel-bg-container {
+            background-color: #83c6dd; 
+            background-size: cover;
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+            position: relative;
+            font-family: 'Russo one', sans-serif;
+            overflow-x: hidden;
+            padding-bottom: 4rem;
+        }
+
+        .mockup-workspace {
+            max-width: 840px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .course-title {
+            color: #2b4c7e;
+            font-size: calc(1.4rem + 1vw);
+            font-weight: 700;
+            text-align: center;
+            line-height: 1.3;
+            padding: 0 10px;
+        }
+
+        /* --- Retro Windowed Launch Counter Timer --- */
+        .retro-timer-window {
+            background-color: #F1DFAE; 
+            border: 2px solid #000;
+            max-width: 460px;
+            margin: 1.5rem auto 1rem auto;
+            box-shadow: 4px 4px 0px #F77BB7;
+        }
+
+        .timer-window-body {
+            padding: 16px 20px 24px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .pixel-timer-grid {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 380px;
+            gap: 4px;
+        }
+
+        .timer-block {
+            border: 2px solid #000;
+            flex-grow: 1;
+            width: 100px;
+            padding: 12px 0 6px 0;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 900;
+            position: relative;
+            box-shadow: inset -2px -2px 0px rgba(0,0,0,0.1);
+        }
+
+        .block-pink {
+            background-color: #F77BB7; 
+            color: #000;
+        }
+
+        .block-blue {
+            background-color: #A1CCFF; 
+            color: #000;
+        }
+
+        .timer-block span {
+            font-size: calc(1.8rem + 1vw);
+            line-height: 1;
+            display: block;
+            letter-spacing: -1px;
+        }
+
+        .block-label {
+            font-family: 'Russo one', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .timer-divider {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: calc(1.8rem + 1vw);
+            font-weight: 900;
+            color: #000;
+            padding-bottom: 22px; 
+            animation: retroBlink 1s step-end infinite;
+        }
+
+        @keyframes retroBlink {
+            50% { opacity: 0; }
+        }
+
+        /* --- Retro Loading Bar --- */
+        .loading-bar-frame {
+            width: 180px;
+            height: 24px;
+            background-color: #fff;
+            border: 2px solid #000;
+            margin: 0 auto 2rem auto;
+            padding: 2px;
+        }
+
+        .loading-bar-fill {
+            height: 100%;
+            width: 0%; 
+            background-color: #5aa4f6; 
+            transition: width 0.4s ease;
+        }
+
+        /* --- Decorative Waves --- */
+        .waves-row-decorator {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 280px;
+            margin: 0 auto 2.5rem auto; /* Adjusted margin to offset the removed scrolling wave */
+            padding: 0 10px;
+        }
+        .waves-row-decorator img {
+            width: 32px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+
+        /* --- Global Retro Windows Framework --- */
+        .retro-window {
+            background-color: #fdf5e6;
+            border: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2.5rem;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.12);
+            width: 100%;
+            transition: box-shadow 0.2s ease;
+            z-index: 5;
+        }
+
+        .retro-titlebar {
+            background-color: #a4cbf6;
+            border-bottom: 2px solid #000;
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            height: 32px;
+            padding: 0 4px 0 12px;
+            user-select: none;
+        }
+
+        .window-title-text {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: #68C1D3;
+            white-space: nowrap;
+            overflow: hidden;
+            text-transform: uppercase;
+            text-overflow: ellipsis;
+            padding-right: 15px; 
+        }
+
+        .retro-controls {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            height: 22px; 
+        }
+
+        .retro-btn {
+            background: #fdf5e6;
+            border: 2px solid #000;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 900;
+            font-family: monospace;
+            padding: 0 0 2px 0; 
+            cursor: pointer;
+            color: #000;
+            outline: none;
+            box-sizing: border-box;
+        }
+        .retro-btn:active {
+            background-color: #e6dfd3;
+        }
+
+        .retro-window-body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* --- Maximize Popup Window Overlay Smudge Styles --- */
+        .window-maximized {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            margin: 0 !important;
+            z-index: 9999 !important;
+            box-shadow: none !important;
+            border: none !important;
+            background-color: rgba(131, 198, 221, 0.4) !important; 
+            backdrop-filter: blur(8px) saturate(120%);
+            -webkit-backdrop-filter: blur(8px) saturate(120%);
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 16px !important;
+            box-sizing: border-box !important;
+        }
+
+        .window-maximized .retro-titlebar {
+            width: 100%;
+            max-width: 780px;
+            border: 2px solid #000;
+            border-bottom: 2px solid #000 !important;
+        }
+
+        .window-maximized .retro-window-body {
+            width: 100%;
+            max-width: 780px;
+            background-color: #fdf5e6;
+            border-left: 2px solid #000;
+            border-right: 2px solid #000;
+            border-bottom: 2px solid #000;
+            max-height: calc(100vh - 80px);
+        }
+
+        .window-maximized .retro-content {
+            max-height: calc(100vh - 150px) !important;
+            height: auto;
+            overflow-y: auto !important;
+            -webkit-overflow-scrolling: touch; 
+        }
+
+        /* --- Scrollable Content Window Adjustments --- */
+        .retro-content-wrapper {
+            display: flex;
+            background-color: #fdf5e6;
+            border-bottom: 2px solid #000;
+            width: 100%;
+        }
+
+        .retro-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+            max-height: 320px;
+            overflow-y: auto;
+            scrollbar-width: none; 
+        }
+        .retro-content::-webkit-scrollbar { display: none; }
+
+        .retro-v-scrollbar {
+            width: 14px;
+            background-color: #fdf5e6;
+            border-left: 2px solid #000;
+        }
+        .scrollbar-thumb-v {
+            background-color: #2b4c7e;
+            height: 45px;
+            width: 100%;
+            border-bottom: 2px solid #000;
+        }
+
+        .retro-h-scrollbar {
+            background-color: #a4cbf6;
+            border-bottom: 2px solid #000;
+            height: 16px;
+            position: relative;
+            width: 100%;
+        }
+        .scrollbar-thumb-h {
+            position: absolute;
+            left: 15%;
+            top: 0;
+            height: 100%;
+            width: 40px;
+            background-color: #fdf5e6;
+            border-right: 2px solid #000;
+        }
+
+        /* --- File Explorer Style Maps --- */
+        .explorer-header {
+            border-bottom: 1px dashed #000;
+            text-align: center;
+            padding: 5px 0;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #333;
+        }
+
+        .explorer-grid-body {
+            display: flex;
+            flex-direction: column; 
+            padding: 20px;
+            gap: 15px;
+            overflow-y: auto;
+        }
+
+        .folder-column-block {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+
+
+        .folder-node-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none !important;
+            color: #000 !important;
+            padding: 8px;
+            background-color: rgba(0,0,0,0.02); 
+        }
+        .folder-node-item:active { background-color: rgba(0,0,0,0.08); }
+
+        .folder-icon-vector {
+            width: 36px;
+            height: auto;
+            image-rendering: pixelated;
+        }
+        .folder-node-text { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.5px; }
+
+        /* --- Media Queries for Desktop Grid Switching --- */
+        @media (min-width: 768px) {
+            .mockup-workspace { padding-top: 3rem; }
+            .explorer-grid-body {
+                flex-direction: row; 
+                justify-content: space-between;
+                padding: 35px 45px;
+                gap: 0;
+            }
+            .folder-column-block { width: 42%; gap: 22px; }
+            .explorer-center-label { width: 16%; border-top: none; border-bottom: none; padding: 0; }
+            .folder-node-item { padding: 0; background-color: transparent; }
+            .dir-right { justify-content: flex-end; }
+            .retro-content { padding: 40px 35px; max-height: 380px; }
+            .waves-row-decorator { max-width: 550px; margin-bottom: 3.5rem; }
+            .waves-row-decorator img { width: 42px; }
+            
+            .window-maximized { padding: 40px !important; }
+            .window-maximized .retro-window-body { max-height: calc(100vh - 120px); }
+            .window-maximized .retro-content { max-height: calc(100vh - 220px) !important; }
+        }
+    </style>
 </head>
 
 <body>
     <header id="header"></header>
 
-    <div class="container-fluid bg-white px-0">
-
-
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
+    <div class="container-fluid px-0 pixel-bg-container w-100">
+        <div class="mockup-workspace px-3">
+            
+            <div class="text-center">
+                <h1 class="course-title">Designing Digital Experiences:<br>Why Some Apps Feel Amazing</h1>
             </div>
 
-            <div class="carousel-inner" style="height: auto;">
-                <div id="carousel-item" class="carousel-item active">
-                    <div class="row">
-                        <img src="./images/1.webp" class="d-block w-100 opacity-50" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+            <div class="retro-timer-window">
+                <div class="retro-titlebar">
+                    <span class="window-title-text">LAUNCH_COUNT</span>
+                </div>
+                
+                <div class="timer-window-body">
+                    <div class="pixel-timer-grid">
+                        <div class="timer-block block-pink">
+                            <span id="days">00</span>
+                            <div class="block-label">DAYS</div>
+                        </div>
+                        
+                        <div class="timer-divider">:</div>
+                        
+                        <div class="timer-block block-blue">
+                            <span id="hours">00</span>
+                            <div class="block-label">HOURS</div>
+                        </div>
+                        
+                        <div class="timer-divider">:</div>
+                        
+                        <div class="timer-block block-pink">
+                            <span id="minutes">00</span>
+                            <div class="block-label">MINUTES</div>
                         </div>
                     </div>
                 </div>
-                <div id="carousel-item" class="carousel-item">
-                    <img src="./images/4.webp" class="d-block w-100 opacity-50" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
+            </div>
+
+            <div class="loading-bar-frame">
+                <div class="loading-bar-fill"></div>
+            </div>
+
+            <div class="waves-row-decorator">
+                <img src="./images/wave-1.png" alt="Pixel Wave">
+                <img src="./images/wave-1.png" alt="Pixel Wave">
+                <img src="./images/wave-1.png" alt="Pixel Wave">
+                <img src="./images/wave-1.png" alt="Pixel Wave">
+            </div>
+
+            <div class="retro-window">
+                <div class="retro-titlebar">
+                    <span class="window-title-text">Course_Info.txt</span>
+                    <div class="retro-controls">
+                        <button class="retro-btn btn-minimize" title="Minimize">_</button>
+                        <button class="retro-btn btn-maximize" title="Maximize">☐</button>
+                        <button class="retro-btn btn-close" title="Close">X</button>
                     </div>
                 </div>
-                <div id="carousel-item" class="carousel-item">
-                    <img src="./images/5.webp" class="d-block w-100 opacity-50" alt="...">
-                    <div class="carousel-caption d-none d-md-block">
+                
+                <div class="retro-window-body">
+                    <div class="retro-content-wrapper">
+                        <div class="retro-content">
+                            <div class="text-dark" style="font-size: 1.05rem; line-height: 1.6;">
+                                <p>
+                                    Some apps feel effortless, addictive, and strangely satisfying - while others make you want to delete them after 10 seconds. We use digital products every day, yet most people have no idea why certain apps feel amazing to use and others feel painful. What makes an app intuitive? Why do some designs just click? Is it talent, psychology, design rules or a bit of magic?
+                                </p>
+                                <p class="my-4">
+                                    Join us as we dive into the world of UX/UI design, psychology, user behavior, and product thinking - all in a fun, interactive, and friendly way. You’ll learn how designers think, how small design decisions shape big emotions, and how digital experiences are crafted to feel smooth, human, and engaging. No boring classes - expect games, real-world examples, creative challenges, and lots of “aha!” moments.
+                                </p>
+                                <p class="mb-0">
+                                    And of course, it’s not just about learning. You’ll experience the vibrant energy of Skopje, explore the culture and history of North Macedonia, meet international students from all backgrounds, and create memories long after the course ends.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="retro-v-scrollbar">
+                            <div class="scrollbar-thumb-v"></div>
+                        </div>
+                    </div>
+
+                    <div class="retro-h-scrollbar">
+                        <div class="scrollbar-thumb-h"></div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="orange-text text-center my-5 mx-0 row justify-content-center">
-            <h2>Designing Digital Experiences: Why Some Apps Feel Amazing</h2>
-        </div>
+            <div class="retro-window">
+                <div class="retro-titlebar">
+                    <span class="window-title-text">File Explorer</span>
+                    <div class="retro-controls">
+                        <button class="retro-btn btn-minimize" title="Minimize">_</button>
+                        <button class="retro-btn btn-maximize" title="Maximize">☐</button>
+                        <button class="retro-btn btn-close" title="Close">X</button>
+                    </div>
+                </div>
+                
+                <div class="retro-window-body">
+                    <div class="explorer-header">
+                        || FILE_EXPLORER ||
+                    </div>
+                    
+                    <div class="retro-content overflow-auto mb-0 w-100 p-0">
+                        <div class="explorer-grid-body">
+                            <div class="folder-column-block">
+                                <a href="about.html" class="folder-node-item">
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                    <span class="folder-node-text">[ABOUT]</span>
+                                </a>
+                                <a href="schedule.html" class="folder-node-item">
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                    <span class="folder-node-text">[SCHEDULE]</span>
+                                </a>
+                                <a href="sponsors.html" class="folder-node-item">
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                    <span class="folder-node-text">[PARTNERS]</span>
+                                </a>
+                                <a href="media.html" class="folder-node-item">
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                    <span class="folder-node-text">[MEDIA]</span>
+                                </a>
+                            </div>
 
-        <div class="h5 text-dark text-center mx-5">
-            <p style="font-size: 1.25rem;">
-                Some apps feel effortless, addictive, and strangely satisfying - while others make you want to delete them after 10 seconds. We use digital products every day, yet most people have no idea why certain apps feel amazing to use and others feel painful. What makes an app intuitive? Why do some designs just click? Is it talent, psychology, design rules or a bit of magic?
-<br><br>
-Join us as we dive into the world of UX/UI design, psychology, user behavior, and product thinking - all in a fun, interactive, and friendly way. You’ll learn how designers think, how small design decisions shape big emotions, and how digital experiences are crafted to feel smooth, human, and engaging. No boring classes - expect games, real-world examples, creative challenges, and lots of “aha!” moments.
-<br><br>
-And of course, it’s not just about learning. You’ll experience the vibrant energy of Skopje, explore the culture and history of North Macedonia, meet international students from all backgrounds, and create memories long after the course ends.
-<br><br>
-            </p>
-        </div>
+                            <div class="folder-column-block">
+                                <a href="participants.html" class="folder-node-item dir-right">
+                                    <span class="folder-node-text">[PARTICIPANTS]</span>
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                </a>
+                                <a href="survival-guide.html" class="folder-node-item dir-right">
+                                    <span class="folder-node-text">[SURVIVAL GUIDE]</span>
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                </a>
+                                <a href="organizers.html" class="folder-node-item dir-right">
+                                    <span class="folder-node-text">[ORGANIZERS]</span>
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                </a>
+                                <a href="contact.html" class="folder-node-item dir-right">
+                                    <span class="folder-node-text">[CONTACT]</span>
+                                    <img src="./images/folder.png" class="folder-icon-vector" alt="Yellow Folder">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
 
     <footer id="footer"></footer>
