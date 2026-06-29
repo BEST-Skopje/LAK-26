@@ -1,4 +1,5 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,9 +9,11 @@
         content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje" />
 
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:wght@400;700&display=swap' rel='stylesheet'>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
 
     <title>Sponsors - BEST Course in Summer 2026</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -26,183 +29,298 @@
             $("#footer").load("footer.html");
         });
     </script>
+
+    <style>
+        /* --- Background Setup with Separated Random Clouds --- */
+        .pixel-bg-container {
+            background-color: #83c6dd;
+            min-height: 100vh;
+            padding-bottom: 5rem;
+            position: relative;
+            
+            /* Loads the cloud image 4 distinct times */
+            background-image: 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png');
+            
+            /* Randomly spreads them across the sky grid using precise X% Y% coordinates */
+            background-position: 
+                12% 8%,    /* Cloud 1: Top Left */
+                88% 22%,   /* Cloud 2: Top Right */
+                5% 72%,    /* Cloud 3: Bottom Left */
+                78% 85%;   /* Cloud 4: Bottom Right */
+            
+            /* Varying sizes for a natural depth effect */
+            background-size: 
+                170px auto, 
+                140px auto, 
+                150px auto, 
+                180px auto;
+            
+            /* "no-repeat" keeps them exactly at their assigned random coordinates */
+            background-repeat: no-repeat;
+            
+            /* Ensures crystal-clear retro rendering */
+            image-rendering: pixelated; 
+        }
+
+        .page-header-title {
+            display: none;
+        }
+
+        /* --- Retro OS Window Styling --- */
+        .retro-window {
+            background-color: #fdf5e6;
+            border: 3px solid #000;
+            width: 100%;
+            max-width: 320px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 6px 6px 0px #e0579a; /* Pink offset shadow */
+            position: relative;
+            z-index: 1; /* Keeps windows stacked safely above background elements */
+        }
+
+        /* Top Title Bar */
+        .retro-titlebar {
+            background-color: #2b4c7e; /* Dark navy */
+            border-bottom: 3px solid #000;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 38px;
+            padding: 2px 4px;
+            position: relative;
+        }
+
+        /* Window Controls Box */
+        .retro-controls {
+            display: flex;
+            height: 100%;
+            gap: 0;
+            margin-left: auto;
+        }
+
+        /* Individual control buttons */
+        .retro-btn {
+            background: #fdf5e6;
+            border: 2px solid #000;
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: 900;
+            font-family: monospace;
+            padding: 0;
+            cursor: pointer;
+            line-height: 1;
+            color: #000;
+            margin-right: -2px; /* Overlap borders left-to-right */
+        }
+
+        .retro-btn:hover {
+            background: #e6dfd3;
+        }
+
+        /* Content Shell layout with fake side scrollbar track */
+        .retro-content-wrapper {
+            display: flex;
+            background-color: #fdf5e6;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Main Image Content Area */
+        .retro-content {
+            padding: 30px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-grow: 1;
+            min-height: 180px;
+        }
+
+        .retro-content img {
+            max-width: 85%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto; /* Ensure image is centered */
+        }
+
+        /* Fake Retro Vertical Scrollbar Side panel */
+        .retro-v-scrollbar {
+            width: 16px;
+            background-color: #fdf5e6;
+            border-left: 2px solid #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Thumb at bottom matching screenshot */
+            flex-shrink: 0;
+        }
+
+        .scrollbar-thumb-v {
+            background-color: #fdf5e6;
+            height: 40px;
+            width: 100%;
+            border: 2px solid #000;
+            border-right: none;
+            border-left: none;
+            box-sizing: border-box;
+        }
+
+        /* --- Sponsors Horizontal Scrollbar Track to match index.html --- */
+        .retro-h-scrollbar {
+            background-color: #fdf5e6;    
+            border-top: 2px solid #000;    
+            border-bottom: 2px solid #000;
+            height: 20px;
+            width: 100%;
+            position: relative;
+        }
+
+        /* --- Horizontal Thumb structure --- */
+        .scrollbar-thumb-h {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 30px;
+            background-color: #fdf5e6;
+            border: 2px solid #000;       
+            border-top: none;             
+            border-bottom: none;          
+            box-sizing: border-box;
+        }
+
+        /* Footer Text Area */
+        .retro-footer {
+            background-color: #fdf5e6;
+            padding: 12px 10px;
+            text-align: center;
+        }
+
+        .retro-footer h5 {
+            font-family: 'Russo one', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #000;
+            margin: 0;
+            text-align: center; /* Explicitly centered */
+        }
+
+        /* Ensure all sponsor columns are vertically aligned */
+        .sponsor-row {
+            align-items: stretch;
+            position: relative;
+            z-index: 2;
+        }
+
+        .sponsor-col {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    </style>
 </head>
 
 <body>
     <header id="header"></header>
 
-
-    <div class="container-fluid px-0 bg-white w-100">
+    <div class="container-fluid px-0 pixel-bg-container w-100">
         
-        <div class="row justify-content-center mx-0">
+        <div class="row justify-content-center mx-0 page-header-title">
             <h1 class="py-4 blue-text text-center">SPONSORS</h1>
             <img class="divider-mark" alt="..." src="./images/divider.png">
         </div>
-        
-        <div class="row mx-lg-5 mx-md-3 mx-1 pt-4" style="font-size: 0.8rem;">
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/sponsor.webp" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Sponsor Slot #1</h5>
-                        <p class="card-text">Logo and link coming soon</p>
-                    </div>
-                </div>
-            </div>
+        <div class="row mx-lg-5 mx-md-3 mx-2 pt-5 justify-content-center sponsor-row">
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/sponsor.webp" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-5 sponsor-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Sponsor Slot #2</h5>
-                        <p class="card-text">Logo and link coming soon</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-content">
+                            <img src="./images/partner-logos/sponsor.webp" alt="Sponsor Logo" title="Sponsor Slot #1">
+                        </div>
+                        <div class="retro-v-scrollbar">
+                            <div class="scrollbar-thumb-v"></div>
+                        </div>
+                    </div>
+                    <div class="retro-h-scrollbar">
+                        <div class="scrollbar-thumb-h"></div>
+                    </div>
+                    <div class="retro-footer">
+                        <h5>Sponsor Slot #1</h5>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/sponsor.webp" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-5 sponsor-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Sponsor Slot #3</h5>
-                        <p class="card-text">Logo and link coming soon</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-content">
+                            <img src="./images/partner-logos/sponsor.webp" alt="Sponsor Logo" title="Sponsor Slot #2">
+                        </div>
+                        <div class="retro-v-scrollbar">
+                            <div class="scrollbar-thumb-v"></div>
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
+                    <div class="retro-h-scrollbar">
+                        <div class="scrollbar-thumb-h"></div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #4</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-footer">
+                        <h5>Sponsor Slot #2</h5>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-5 sponsor-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #5</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-content">
+                            <img src="./images/partner-logos/sponsor.webp" alt="Sponsor Logo" title="Sponsor Slot #3">
+                        </div>
+                        <div class="retro-v-scrollbar">
+                            <div class="scrollbar-thumb-v"></div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
+                    <div class="retro-h-scrollbar">
+                        <div class="scrollbar-thumb-h"></div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #6</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #7</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-footer">
+                        <h5>Sponsor Slot #3</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #8</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #9</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #10</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #11</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/5dc0901aa454c8d5aeaa5233_sponsor-2.jpg" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">SPONSOR #12</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div> -->
+
         </div>
     </div>
+
     <footer id="footer"></footer>
 </body>
 
