@@ -1,3 +1,13 @@
+:root {
+    --summer-pink: #F77BB7;
+    --summer-blue: #68C1D3;
+    --summer-light-blue: #A1CCFF;
+    --summer-dark-blue: #2C2E77;
+    --summer-cream: #F1DFAE;
+    --summer-hot-pink: #CF3A77;
+	--summer-berry: #5A2149;
+}
+
 body {
 	background-color: white;
 	font-family: "Montserrat";
@@ -68,6 +78,438 @@ body {
 .schedule {
 	background-color: #f3eae5;
 }
+
+
+/* Organisers page */
+.organisers-page {
+    background-color: var(--summer-light-blue);
+    color: #2C2E77;
+    font-family: "Ithaca", "Montserrat", sans-serif;
+    isolation: isolate;
+    position: relative;
+    overflow: hidden;
+}
+
+/* all real content above decorations */
+.organisers-page > .container {
+    position: relative;
+    z-index: 5;
+}
+
+.section-kicker {
+    color: #CF3A77;
+    font-family: "Russo One", sans-serif;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+}
+
+.organisers-title {
+    color: #2C2E77;
+    font-family: "Russo One", sans-serif;
+    letter-spacing: 0.06em;
+    text-shadow: 3px 3px 0 #F77BB7;
+}
+
+.organiser-card {
+    max-width: 18rem;
+    border: 3px solid #2C2E77;
+    border-radius: 0;
+    background-color: #F1DFAE;
+    box-shadow: 8px 8px 0 #68C1D3;
+}
+
+.organiser-card-main {
+    max-width: 20rem;
+    background-color: #F77BB7;
+    box-shadow: 8px 8px 0 #2C2E77;
+}
+
+.organiser-photo {
+    --bs-aspect-ratio: 125%;
+    background-color: #F1DFAE;
+}
+
+.organiser-card .card-title {
+    color: #2C2E77;
+    font-family: "Russo One", sans-serif;
+}
+
+.organiser-card .card-text {
+    color: #CF3A77;
+	font-size: 1.2rem;
+}
+
+.organiser-card-main .card-title {
+    color: #5A2149;
+}
+
+.organiser-card-main .card-text {
+    color: #4B153F;
+	font-size: 1.2rem;
+}
+
+.divider-mark {
+    height: 2rem;
+    width: auto;
+    image-rendering: pixelated;
+}
+
+/* Shared base for all decoration images */
+.org-decoration {
+    position: absolute;
+    pointer-events: none;
+    image-rendering: pixelated;
+    user-select: none;
+}
+
+/* --- BUILDINGS (anchored to page bottom, left & right sides) --- */
+ 
+/* buildings */
+.org-building-1,
+.org-building-2,
+.org-building-3,
+.org-building-4 {
+    z-index: 2;
+}
+ 
+.org-building-1 {
+    bottom: 0;
+    left: 0;
+    opacity: 0.95;
+    z-index: 2;
+}
+ 
+.org-building-2 {
+    bottom: 0;
+    left: 62px;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+.org-building-3 {
+    bottom: 0;
+    right: 0px;
+    opacity: 0.95;
+    z-index: 2;
+}
+
+.org-building-4 {
+    bottom: 0;
+    right: 95px;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+/* --- CLOUDS --- */
+ 
+.org-cloud-1 {
+    top: 3rem;
+    right: 3%;
+    z-index: 0;
+}
+
+.org-cloud-2 {
+    top: 6rem;
+    left: 3%;
+    z-index: 0;
+}
+
+.org-cloud-3 {
+    top: 16rem;
+    right: 18%;
+    z-index: 0;
+}
+
+.org-cloud-4 {
+    top: 28rem;
+    left: 2%;
+    z-index: 0;
+}
+
+.org-cloud-5 {
+    top: 7%;
+    right: 70%;
+    z-index: 0;
+}
+ 
+.org-cloud-6 {
+    top: 9%;
+    right: 47%;
+    z-index: 0;
+}
+
+.org-cloud-7 {
+    top: 15%;
+    right: 10%;
+    z-index: 0;
+}
+
+.org-wave-1,
+.org-wave-2,
+.org-wave-3 {
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.org-wave-1 {
+    bottom: 0rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.org-wave-2 {
+    bottom: 0rem;
+    left: calc(50% - 190px);
+}
+
+.org-wave-3 {
+    bottom: 0rem;
+    left: calc(50% + 70px);
+}
+ 
+/* SECTION FLOWERS - bigger and actually near the headings */
+.org-section-flower {
+    position: absolute;
+    top: 42%;
+    width: 78px;
+    image-rendering: pixelated;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* CO-ORGANISERS flowers */
+.organisers-page section:nth-of-type(2) .org-section-flower-left {
+    left: calc(50% - 380px);
+    transform: translateY(-50%) rotate(-12deg);
+}
+
+.organisers-page section:nth-of-type(2) .org-section-flower-right {
+    right: calc(50% - 380px);
+    transform: translateY(-50%) rotate(10deg);
+}
+
+/* BOARD flowers */
+.organisers-page section:nth-of-type(3) .org-section-flower-left {
+    left: calc(50% - 210px);
+    transform: translateY(-50%) rotate(-12deg);
+}
+
+.organisers-page section:nth-of-type(3) .org-section-flower-right {
+    right: calc(50% - 210px);
+    transform: translateY(-50%) rotate(10deg);
+}
+
+/* Make sure title stays above flowers */
+.organisers-title,
+.divider-mark {
+    position: relative;
+    z-index: 2;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .organisers-page {
+        padding-bottom: 8rem;
+    }
+	
+	.org-building-2,
+    .org-building-4 {
+        display: none;
+    }
+
+    .org-building-1 {
+        width: 70px;
+    }
+
+    .org-building-3 {
+        width: 80px;
+    }
+
+    .org-cloud-1 {
+        width: 230px;
+    }
+
+    .org-cloud-2 {
+        width: 140px;
+    }
+
+    .org-cloud-3,
+    .org-cloud-4,
+	.org-cloud-5 {
+        display: none;
+    }
+
+   .org-wave-1 {
+        width: 120px;
+        bottom: 0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .org-wave-2 {
+        width: 95px;
+        bottom: 1rem;
+        left: calc(50% - 120px);
+    }
+
+    .org-wave-3 {
+        width: 95px;
+        bottom: 1rem;
+        left: calc(50% + 25px);
+    }
+
+    .org-section-flower {
+        width: 55px;
+    }
+
+    .organisers-page section:nth-of-type(2) .org-section-flower-left,
+    .organisers-page section:nth-of-type(3) .org-section-flower-left {
+        left: 1rem;
+    }
+
+    .organisers-page section:nth-of-type(2) .org-section-flower-right,
+    .organisers-page section:nth-of-type(3) .org-section-flower-right {
+        right: 1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .org-section-flower {
+        display: none;
+    }
+
+    .org-wave-1,
+    .org-wave-2 {
+        display: none;
+    }
+
+    .org-wave-3 {
+        width: 120px;
+        bottom: 3rem;
+    }
+
+    .org-cloud-1 {
+        width: 120px;
+        top: 0.8rem;
+    }
+
+    .org-cloud-2 {
+        width: 60px;
+        top: 0.8rem;
+    }
+}
+
+/* Academic partners page */
+
+        .academic-partners-page {
+    		min-height: 100vh;
+    		background:
+       			linear-gradient(180deg, rgba(161, 204, 255, 0.95), rgba(241, 223, 174, 0.95));
+    		color: var(--summer-dark-blue);
+    		font-family: "Ithaca", "Montserrat", sans-serif;
+    		isolation: isolate;
+			font-size: 1.3rem;
+}
+
+        .retro-heading {
+            font-family: "Russo One", sans-serif;
+            color: var(--summer-dark-blue);
+            letter-spacing: 0.06em;
+            text-shadow: 5px 5px 0 var(--summer-pink);
+        }
+
+        .retro-small-heading {
+            font-family: "Russo One", sans-serif;
+            color: var(--summer-hot-pink);
+            letter-spacing: 0.12em;
+        }
+
+        .retro-window {
+            border: 4px solid var(--summer-dark-blue);
+            box-shadow: 12px 12px 0 var(--summer-blue);
+            background-color: var(--summer-cream);
+        }
+
+        .retro-window-bar {
+    background-color: var(--summer-pink);
+    border-bottom: 4px solid var(--summer-dark-blue);
+    font-family: "Ithaca", "Montserrat", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+}
+
+        .retro-btn {
+                width: 22px;
+                height: 22px;
+                background-color: var(--summer-cream);
+                border: 3px solid var(--summer-dark-blue);
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 13px;
+                font-weight: bold;
+                color: var(--summer-dark-blue);
+                line-height: 1;
+                cursor: pointer;
+                font-family: "Montserrat", sans-serif;
+                padding-left: 1.2px;
+}
+
+        .retro-card {
+            background-color: var(--summer-light-blue);
+            border: 3px solid var(--summer-dark-blue);
+            box-shadow: 7px 7px 0 var(--summer-pink);
+        }
+
+        .retro-link {
+    font-family: "Ithaca", "Montserrat", sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    color: var(--summer-berry);
+    background-color: var(--summer-pink);
+    border: 4px solid var(--summer-dark-blue);
+    box-shadow: 6px 6px 0 var(--summer-blue);
+    text-decoration: none;
+}
+
+        .retro-link:hover {
+            color: var(--summer-dark-blue);
+            background-color: var(--summer-cream);
+        }
+
+        .pixel-decoration {
+            position: absolute;
+            image-rendering: pixelated;
+            pointer-events: none;
+            user-select: none;
+            z-index: 1;
+        }
+
+        .main-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .partner-logo-box {
+            background-color: white;
+            border: 4px solid var(--summer-dark-blue);
+            box-shadow: 8px 8px 0 var(--summer-pink);
+        }
+
+        .divider-mark {
+            image-rendering: pixelated;
+        }
+
+        @media (max-width: 768px) {
+            .hide-mobile {
+                display: none;
+            }
+
+            .retro-window {
+                box-shadow: 7px 7px 0 var(--summer-blue);
+            }
+        }
+
 #get-to-know-us {
 	background-color: #205cc6;
 	color: white;
