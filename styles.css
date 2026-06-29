@@ -1313,3 +1313,67 @@ body {
 		padding-bottom: 0;
 	}
 }
+/* ===== SURVIVAL PAGE DECORATIONS ===== */
+
+/* Override background to make the dark blue dominant */
+body.survival {
+    background: linear-gradient(to bottom, #68C1D3 4%, #161944 20%);
+}
+
+/* This targets the buildings specifically to apply the fade effect */
+.bg-building {
+    opacity: 0.8 !important;
+    z-index: 1;
+}
+
+/* This ensures your content stays on top of the faded buildings */
+.survival-content {
+    position: relative;
+    z-index: 10;
+}
+
+/* Base for all survival-page decoration images */
+.surv-deco {
+    position: absolute;
+    bottom: 0;
+    pointer-events: none;
+    image-rendering: pixelated;
+    user-select: none;
+}
+
+/* LEFT-SIDE BUILDINGS */
+.surv-b2 { left: 0;      height: 260px; width: auto; z-index: 2; }
+.surv-b1 { left: 107px;  height: 274px; width: auto; z-index: 2; }
+
+/* RIGHT-SIDE BUILDINGS */
+.surv-b4 { right: 0;     height: 215px; width: auto; z-index: 2; }
+.surv-b3 { right: 112px; height: 222px; width: auto; z-index: 2; }
+
+/* BUS STOP/BUS */
+.surv-buska { left: 0;  height: 120px; width: auto; z-index: 3; }
+.surv-bus   { right: 0; height: 80px;  width: auto; z-index: 3; }
+
+/* MOBILE FIX */
+@media (max-width: 768px) {
+    .bg-building {
+        height: 35vh !important;
+    }
+    
+    body.survival iframe {
+        width: 95% !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .surv-b1, .surv-b3 { display: none; }
+    .surv-b2  { height: 160px; }
+    .surv-b4  { height: 135px; }
+    .surv-buska { height: 90px; }
+    .surv-bus   { height: 55px; }
+}
+
+@media (max-width: 576px) {
+    .surv-buska, .surv-bus { display: none; }
+    .surv-b2 { height: 120px; }
+    .surv-b4 { height: 100px; }
+}
