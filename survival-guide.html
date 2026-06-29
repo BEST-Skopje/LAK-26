@@ -1,4 +1,5 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -31,13 +32,18 @@
 <body class="survival">
     <header id="header"></header>
 
-    <div class="container-fluid w-100">
-        <div class="row justify-content-center pt-2">
+    <div class="container-fluid w-100" style="position: relative; min-height: 100vh;">
+
+       <img class="bg-building" src="images/graphics/Zgrada1.svg" style="position:absolute; left:0; bottom:0; height:75vh; width:auto; image-rendering:pixelated; pointer-events:none;">
+<img class="bg-building" src="images/graphics/Zgrada3.svg" style="position:absolute; right:0; bottom:0; height:75vh; width:auto; image-rendering:pixelated; pointer-events:none;">
+        
+        <div class="row justify-content-center pt-2" style="position: relative; z-index: 10;">
             <h2 class="white-text text-center">SURVIVAL GUIDE</h2>
             <img class="divider-mark" alt="..." src="./images/divider.png">
         </div>
-        <div class="row justify-content-center my-2 py-3 w-100 h-100 mx-auto">
-            <iframe style="border:5px;width:80%;height:auto" src="https://online.anyflip.com/vzdqy/zvsd/index.html" 
+        
+        <div class="row justify-content-center my-2 py-3 w-100 h-100 mx-auto" style="position: relative; z-index: 10;">
+            <iframe style="border:5px;width:80%;height:auto;min-height:70vh;" src="https://online.anyflip.com/vzdqy/zvsd/index.html"
             seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true"></iframe>
         </div>
 
