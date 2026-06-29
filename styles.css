@@ -442,8 +442,7 @@ body {
 
         .academic-partners-page {
     		min-height: 100vh;
-    		background:
-       			linear-gradient(180deg, rgba(161, 204, 255, 0.95), rgba(241, 223, 174, 0.95));
+    		background-color: var(--summer-cream);
     		color: var(--summer-dark-blue);
     		font-family: "Ithaca", "Montserrat", sans-serif;
     		isolation: isolate;
@@ -759,7 +758,6 @@ body {
         --retro-beige: #F1DFAE;
         --retro-lightblue: #A1CCFF;
         --retro-darkblue: #2C2E77;
-        --retro-yellow: #FFCB05; /* Новата жолта боја за папката */
     }
 
     /* --- КОНТЕЈНЕР ЗА ПАПКАТА И ЈАЗИЧИЊАТА --- */
@@ -803,8 +801,8 @@ body {
 
     /* Активно јазиче - излегува напред и се спојува со папката */
     .folder-tab-btn.active {
-        background-color: var(--retro-yellow);
-        border-right-color: var(--retro-yellow); /* Ја крие десната граница */
+        background-color: var(--retro-beige);
+        border-right-color: var(--retro-beige); /* Ја крие десната граница */
         z-index: 4;
         transform: translateX(0); 
     }
@@ -819,7 +817,7 @@ body {
     /* --- ГЛАВНА ЖОЛТА ПАПКА --- */
     .folder-body {
         flex-grow: 1;
-        background-color: var(--retro-yellow);
+        background-color: var(--retro-beige);
         border: 4px solid var(--retro-darkblue);
         border-radius: 0 20px 20px 20px;
         padding: 30px;
@@ -871,8 +869,8 @@ body {
         justify-content: space-between;
         align-items: center;
         position: relative;
-        padding: 0 clamp(10px, 3vw, 50px);
-        margin-bottom: 60px;
+        padding: 14px clamp(10px, 3vw, 50px);
+        margin-bottom: 0;
     }
 
     .header-logo {
@@ -1021,7 +1019,7 @@ body {
         
         .retro-header {
             padding: 15px 20px;
-            margin-bottom: 40px;
+            margin-bottom: 0;
         }
 
         .hamburger {
@@ -1113,6 +1111,205 @@ body {
         }
         .retro-header {
             padding: 15px;
-            margin-bottom: 30px;
+            margin-bottom: 0;
         }
     }
+
+/* ==========================================================================
+   FOOTER STYLES (lak-*) — used by footer.html
+   ========================================================================== */
+
+:root {
+	--lak-blue: #519bea;
+	--lak-cream: #fff4df;
+	--lak-navy: #15194d;
+}
+
+.lak-window {
+	width: 100%;
+	max-width: none;
+	display: flex;
+	flex-direction: column;
+	background: var(--lak-cream);
+	border: 4px solid var(--lak-navy);
+	font-family: "Russo One", sans-serif;
+	box-sizing: border-box;
+}
+
+.lak-titlebar {
+	background: var(--lak-blue);
+}
+
+.lak-close {
+	width: 42px;
+	height: 42px;
+	background: var(--lak-cream);
+	border: 2px solid var(--lak-navy);
+	color: var(--lak-navy);
+	font-size: 2.5rem;
+	line-height: 0.7;
+}
+
+.lak-content {
+	color: #050505;
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+}
+
+.lak-content a {
+	color: var(--lak-navy);
+	word-break: break-word;
+}
+
+.lak-social a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--lak-navy);
+	font-size: clamp(1rem, 1.5vw, 1.25rem);
+	line-height: 1;
+	text-decoration: none;
+}
+
+.lak-social i {
+	font-size: clamp(1.8rem, 3vw, 2.5rem);
+}
+
+.lak-footer-meta {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	height: auto;
+	width: 100%;
+}
+
+.lak-social,
+.lak-footer {
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	flex-shrink: 0;
+}
+
+.lak-social {
+	margin-top: auto !important;
+	margin-bottom: auto !important;
+}
+
+.lak-heading {
+	font-size: clamp(2rem, 3vw, 2.6rem);
+}
+
+.lak-role {
+	font-size: clamp(0.75rem, 2vw, 2rem);
+}
+
+.lak-mobile-separator,
+.lak-mobile-contact {
+	font-size: clamp(1.85rem, 10vw, 2.6rem);
+}
+
+.lak-mobile-contact {
+	border-bottom: 4px solid var(--lak-blue);
+	line-height: 0.85;
+}
+
+.lak-wave {
+	width: clamp(80px, 20vw, 270px);
+	image-rendering: pixelated;
+}
+
+.lak-flower {
+	width: clamp(70px, 8vw, 110px);
+	image-rendering: pixelated;
+}
+
+.lak-logos {
+	gap: clamp(4rem, 9vw, 8rem);
+}
+
+.lak-logos svg {
+	width: clamp(120px, 10vw, 170px);
+	max-width: 100%;
+	height: auto;
+}
+
+.lak-footer {
+	font-size: clamp(0.55rem, 1.8vw, 1.7rem);
+}
+
+@media (max-width: 991px) {
+	.lak-window {
+		max-width: none;
+		border-width: 4px;
+	}
+
+	.lak-titlebar h2 {
+		font-size: 1rem;
+	}
+
+	.lak-close {
+		width: 32px;
+		height: 32px;
+		font-size: 2rem;
+	}
+
+	.lak-content {
+		flex: 1;
+		justify-content: flex-start;
+		padding-top: 1.25rem !important;
+		padding-bottom: 0.9rem !important;
+	}
+
+	.lak-content .row {
+		--bs-gutter-y: 0.9rem;
+	}
+
+	.lak-role {
+		font-size: clamp(0.95rem, 4vw, 1.25rem);
+		margin-bottom: 0.4rem !important;
+	}
+
+	.lak-content p,
+	.lak-content a {
+		font-size: clamp(0.66rem, 2.7vw, 0.82rem);
+		line-height: 1.2;
+	}
+
+	.lak-mobile-contact {
+		margin-top: 0.15rem;
+	}
+
+	.lak-logos {
+		gap: 1rem;
+		margin-top: 0.75rem !important;
+		margin-bottom: 0.75rem !important;
+	}
+
+	.lak-logos svg {
+		width: clamp(82px, 25vw, 104px);
+	}
+
+	.lak-social {
+		gap: 1.25rem !important;
+		margin-top: auto !important;
+		margin-bottom: auto !important;
+	}
+
+	.lak-social a {
+		font-size: clamp(0.72rem, 3vw, 0.9rem);
+	}
+
+	.lak-social i {
+		font-size: clamp(1.25rem, 6.2vw, 1.7rem);
+	}
+
+	.lak-footer {
+		font-size: clamp(0.5rem, 2.35vw, 0.72rem);
+		max-width: 260px;
+		margin-left: auto;
+		margin-right: auto;
+		padding-bottom: 0;
+	}
+}
