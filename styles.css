@@ -20,9 +20,10 @@ body {
 	font-weight: bolder;
 }
 .blue-text {
-	font-family: "Anonymous Pro", monospace;
-	color: #205cc6;
+	font-family: "Russo One", monospace;
+	color: #2C2E77;
 	font-weight: bolder;
+	letter-spacing: 0.5rem;
 }
 .white-text {
 	margin-top: 25px;
