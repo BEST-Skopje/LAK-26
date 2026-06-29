@@ -1,4 +1,5 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,9 +9,9 @@
         content="Summer Course '22, BEST Skopje, Board of European Students of Technology - Skopje, BEST , Academic Course 2026, BEST Summer Course Skopje, Skopje" />
 
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Russo+One&display=swap" rel="stylesheet">
 
     <title>Media Partners - BEST Course in Summer 2026</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -26,184 +27,322 @@
             $("#footer").load("footer.html");
         });
     </script>
+
+    <style>
+        /* --- Background Setup with Layered Clouds --- */
+        .pixel-bg-container {
+            background-color: #83c6dd;
+            min-height: 100vh;
+            padding-bottom: 3rem;
+            position: relative;
+            
+            background-image: 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png'), 
+                url('./images/medium-cloud.png');
+            
+            background-position: 
+                12% 4%,    
+                88% 15%,   
+                5% 65%,    
+                78% 85%;   
+            
+            background-size: 
+                130px auto, 
+                110px auto, 
+                120px auto, 
+                140px auto;
+            
+            background-repeat: no-repeat;
+            image-rendering: pixelated; 
+        }
+
+        @media (min-width: 768px) {
+            .pixel-bg-container {
+                padding-bottom: 5rem;
+                background-size: 170px auto, 140px auto, 150px auto, 180px auto;
+                background-position: 12% 8%, 88% 22%, 5% 65%, 78% 78%;
+            }
+        }
+
+        .page-header-title {
+            display: none;
+        }
+
+        /* --- Mobile-First Retro OS Window Custom Styling --- */
+        .retro-window {
+            background-color: #fdf5e6;
+            border: 2px solid #000;
+            width: 100%;
+            max-width: 290px; 
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.15);
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 576px) {
+            .retro-window {
+                max-width: 330px;
+                box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.15);
+            }
+        }
+
+        /* Balanced Retro System Title Bar */
+        .retro-titlebar {
+            background-color: #a4cbf6;
+            border-bottom: 2px solid #000;
+            display: flex;
+            justify-content: flex-end; /* Strictly forces all items to align flush right */
+            align-items: center;
+            height: 32px;
+            padding: 0 6px;
+        }
+
+        @media (min-width: 576px) {
+            .retro-titlebar {
+                height: 34px;
+                padding: 0 8px;
+            }
+        }
+
+        /* Window Controls Box */
+        .retro-controls {
+            display: flex;
+            gap: 2px;
+            flex-shrink: 0;
+            margin-left: auto; /* Absolute push safeguard for the right boundary edge */
+        }
+
+        /* Individual control buttons */
+        .retro-btn {
+            background: #fdf5e6;
+            border: 2px solid #000;
+            width: 16px;
+            height: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            font-weight: 900;
+            font-family: monospace;
+            padding: 0;
+            cursor: pointer;
+            line-height: 1;
+            color: #000;
+        }
+
+        @media (min-width: 576px) {
+            .retro-btn {
+                width: 18px;
+                height: 18px;
+                font-size: 9px;
+            }
+        }
+        
+        .retro-btn:hover {
+            background: #e6dfd3;
+        }
+
+        /* Outer Frame Wrapper Container */
+        .retro-content-wrapper {
+            background-color: #fdf5e6;
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 576px) {
+            .retro-content-wrapper {
+                padding: 10px;
+            }
+        }
+
+        /* Inner Content Window Box */
+        .retro-inner-frame {
+            border: 2px solid #000;
+            background-color: #fff;
+            height: 140px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        @media (min-width: 576px) {
+            .retro-inner-frame {
+                height: 180px;
+                padding: 15px;
+            }
+        }
+
+        .retro-inner-frame img {
+            max-width: 90%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
+        /* Blue Accent Divider Block */
+        .retro-divider {
+            background-color: #a4cbf6;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+            height: 14px;
+            width: 100%;
+        }
+
+        @media (min-width: 576px) {
+            .retro-divider {
+                height: 18px;
+            }
+        }
+
+        /* Footer Text Labels */
+        .retro-footer {
+            background-color: #fdf5e6;
+            padding: 8px 6px;
+            text-align: center;
+        }
+
+        @media (min-width: 576px) {
+            .retro-footer {
+                padding: 10px 8px;
+            }
+        }
+
+        .retro-footer h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: #000;
+            margin: 0;
+            letter-spacing: 0.3px;
+        }
+
+        @media (min-width: 576px) {
+            .retro-footer h5 {
+                font-size: 0.9rem;
+                letter-spacing: 0.5px;
+            }
+        }
+
+        /* Strict Alignment Layout Row Setup */
+        .partner-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .partner-col {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 
 <body>
     <header id="header"></header>
 
-
-    <div class="container-fluid px-0 bg-white w-100">
+    <div class="container-fluid px-0 pixel-bg-container w-100">
         
-        <div class="row justify-content-center mx-0">
+        <div class="row justify-content-center mx-0 page-header-title">
             <h1 class="py-4 blue-text text-center">MEDIA PARTNERS</h1>
             <img class="divider-mark" alt="..." src="./images/divider.png">
         </div>
         
-        <div class="row mx-lg-5 mx-md-3 mx-1 pt-4" style="font-size: 0.8rem;">
+        <div class="row mx-lg-5 mx-md-3 mx-2 pt-4 pt-md-5 justify-content-center partner-row">
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner.webp" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-md-5 partner-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Media Partner Slot #1</h5>
-                        <p class="card-text">Logo and link coming soon</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-inner-frame">
+                            <img src="images/partner-logos/Media_Partner/Telma.webp" alt="Telma Logo" title="Telma">
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner.webp" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Media Partner Slot #2</h5>
-                        <p class="card-text">Logo and link coming soon</p>
+                    <div class="retro-divider"></div>
+                    <div class="retro-footer">
+                        <h5>Телма</h5>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner.webp" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-md-5 partner-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">Media Partner Slot #3</h5>
-                        <p class="card-text">Logo and link coming soon</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-inner-frame">
+                            <img src="images/partner-logos/Media_Partner/Sitel.webp" alt="Telma Logo" title="Telma">
+                        </div>
                     </div>
-                </div>
-            </div>
-<!--
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #4</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-divider"></div>
+                    <div class="retro-footer">
+                        <h5>Сител</h5>
                     </div>
                 </div>
             </div>
 
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-md-5 partner-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #5</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-inner-frame">
+                            <img src="images/partner-logos/Media_Partner/MRT.webp" alt="Telma Logo" title="Telma">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #6</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-divider"></div>
+                    <div class="retro-footer">
+                        <h5>МРТ</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
+
+            <div class="col-lg-4 col-md-6 col-12 mb-4 mb-md-5 partner-col">
+                <div class="retro-window">
+                    <div class="retro-titlebar">
+                        <div class="retro-controls">
+                            <button class="retro-btn">_</button>
+                            <button class="retro-btn">☐</button>
+                            <button class="retro-btn">X</button>
+                        </div>
                     </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #7</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-content-wrapper">
+                        <div class="retro-inner-frame">
+                            <img src="images/partner-logos/Media_Partner/Kanal_5.webp" alt="Telma Logo" title="Telma">
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #8</h5>
-                        <p class="card-text">Some text or link</p>
+                    <div class="retro-divider"></div>
+                    <div class="retro-footer">
+                        <h5>Канал 5</h5>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #9</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #10</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #11</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-6 col-sm-12 mb-3 mx-auto">
-                <div class="card m-auto text-center bg-light  rounded-lg h-100 shadow-lg" style="max-width: 20rem;">
-                    <div class="embed-responsive embed-responsive-1by1 rounded h-75">
-                        <img class="card-img-top img-fluid rounded mx-auto img embed-responsive-item h-100"
-                            src="./images/partner-logos/media-partner-hehe-1024x1024.png" alt=""
-                            style="object-fit: cover;" title="">
-                    </div>
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title text-center">MEDIA PARTNER #12</h5>
-                        <p class="card-text">Some text or link</p>
-                    </div>
-                </div>
-            </div>
-        -->
-        </div>
-    </div>
 
     <footer id="footer"></footer>
 </body>
