@@ -33,7 +33,7 @@
     <style>
         /* --- Background Setup with Separated Random Clouds --- */
         .pixel-bg-container {
-            background-color: #83c6dd;
+            background-color: var(--summer-sky);
             min-height: 100vh;
             padding-bottom: 5rem;
             position: relative;
@@ -92,15 +92,16 @@
             justify-content: flex-start;
             align-items: center;
             height: 38px;
-            padding: 2px 4px;
+            padding: 0 8px;
             position: relative;
         }
 
         /* Window Controls Box */
         .retro-controls {
             display: flex;
+            align-items: center;
             height: 100%;
-            gap: 0;
+            gap: 2px;
             margin-left: auto;
         }
 
@@ -120,7 +121,6 @@
             cursor: pointer;
             line-height: 1;
             color: #000;
-            margin-right: -2px; /* Overlap borders left-to-right */
         }
 
         .retro-btn:hover {
@@ -235,7 +235,6 @@
         
         <div class="row justify-content-center mx-0 page-header-title">
             <h1 class="py-4 blue-text text-center">SPONSORS</h1>
-            <img class="divider-mark" alt="..." src="./images/divider.png">
         </div>
 
         <div class="row mx-lg-5 mx-md-3 mx-2 pt-5 justify-content-center sponsor-row">

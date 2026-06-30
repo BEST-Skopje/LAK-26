@@ -9,11 +9,12 @@
     --summer-cream: #F1DFAE;
     --summer-hot-pink: #CF3A77;
 	--summer-berry: #5A2149;
+    --summer-sky: #83c6dd;
 }
 
 body {
         background-color: white;
-        font-family: "Montserrat";
+        font-family: "Ithaca", "Montserrat", sans-serif;
     }
     #carousel-item {
         background-color: #205cc6;
@@ -26,7 +27,7 @@ body {
         text-transform: uppercase;
     }
     .orange-text {
-        font-family: "Anonymous Pro", monospace;
+        font-family: "Russo One", sans-serif;
         margin-top: 25px;
         font-size: 50px;
         color: #eb6932;
@@ -41,7 +42,7 @@ body {
     .white-text {
         margin-top: 25px;
         font-size: 50px;
-        font-family: "Anonymous Pro", monospace;
+        font-family: "Russo One", sans-serif;
         color: #ffffff;
         font-weight: bolder;
     }
@@ -79,13 +80,13 @@ body {
         color: #205cc6;
     }
     .schedule {
-        background-color: #f3eae5;
+        background-color: var(--summer-cream);
     }
     
 
 /* Organisers page */
 .organisers-page {
-    background-color: var(--summer-light-blue);
+    background-color: var(--summer-sky);
     color: #2C2E77;
     font-family: "Ithaca", "Montserrat", sans-serif;
     isolation: isolate;
@@ -118,7 +119,7 @@ body {
     border: 3px solid #2C2E77;
     border-radius: 0;
     background-color: #F1DFAE;
-    box-shadow: 8px 8px 0 #68C1D3;
+    box-shadow: 8px 8px 0 var(--summer-pink);
 }
 
 .organiser-card-main {
@@ -149,12 +150,6 @@ body {
 .organiser-card-main .card-text {
     color: #4B153F;
 	font-size: 1.2rem;
-}
-
-.divider-mark {
-    height: 2rem;
-    width: auto;
-    image-rendering: pixelated;
 }
 
 /* Shared base for all decoration images */
@@ -315,8 +310,7 @@ body {
 
 
 /* Make sure title stays above flowers */
-.organisers-title,
-.divider-mark {
+.organisers-title {
     position: relative;
     z-index: 2;
 }
@@ -534,10 +528,6 @@ body {
             box-shadow: 8px 8px 0 var(--summer-pink);
         }
 
-        .divider-mark {
-            image-rendering: pixelated;
-        }
-
         @media (max-width: 768px) {
             .hide-mobile {
                 display: none;
@@ -553,14 +543,6 @@ body {
         color: white;
         margin: auto;
         width: 100%;
-    }
-    .divider-mark {
-        height: 2em;
-        width: auto;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 0.5em;
-        margin-bottom: 0.5em;
     }
     .gfs-logo {
         height: 10em;
@@ -644,12 +626,13 @@ body {
     }
 
             /* ЛАК Consistency Sheet Styles */
+            /* --retro-* are aliases of the shared summer palette (single source of truth) */
             :root {
-                --retro-pink: #F77BB7;
-                --retro-teal: #68C1D3;
-                --retro-beige: #F1DFAE;
-                --retro-lightblue: #A1CCFF;
-                --retro-darkblue: #2C2E77;
+                --retro-pink: var(--summer-pink);
+                --retro-teal: var(--summer-blue);
+                --retro-beige: var(--summer-cream);
+                --retro-lightblue: var(--summer-light-blue);
+                --retro-darkblue: var(--summer-dark-blue);
             }
 
             .russo-font {
@@ -662,17 +645,6 @@ body {
                 /* Assuming Ithaca is loaded locally, otherwise falls back to monospace */
                 font-family: 'Ithaca', monospace; 
                 color: var(--retro-darkblue);
-            }
-
-            /* Retro Window Container */
-            .retro-window {
-                background-color: var(--retro-beige);
-                border: 4px solid var(--retro-darkblue);
-                box-shadow: 8px 8px 0px var(--retro-pink);
-                max-width: 900px;
-                margin: 3rem auto;
-                display: flex;
-                flex-direction: column;
             }
 
             /* Window Title Bar */
@@ -702,63 +674,6 @@ body {
                 cursor: pointer;
                 font-family: monospace;
             }
-
-            /* Tabs Styling */
-            .retro-tabs-container {
-                padding: 20px 20px 0 20px;
-            }
-
-            .retro-nav-tabs {
-                border-bottom: 3px solid var(--retro-darkblue);
-                margin-bottom: -3px; /* Pull content up to hide bottom border of active tab */
-            }
-
-            .retro-nav-tabs .nav-link {
-                font-family: 'Ithaca', monospace;
-                background-color: var(--retro-lightblue);
-                color: var(--retro-darkblue);
-                border: 3px solid var(--retro-darkblue);
-                border-bottom: none;
-                border-radius: 0;
-                margin-right: 5px;
-                padding: 10px 20px;
-                font-weight: bold;
-                font-size: 1.1rem;
-            }
-
-            .retro-nav-tabs .nav-link:hover {
-                background-color: var(--retro-teal);
-            }
-
-            .retro-nav-tabs .nav-link.active {
-                background-color: #ffffff;
-                color: var(--retro-darkblue);
-                border: 3px solid var(--retro-darkblue);
-                border-bottom: 3px solid #ffffff; /* Seamless blend with content */
-            }
-
-            /* Tab Content Styling */
-            .retro-tab-content-wrapper {
-                background-color: #ffffff;
-                border: 3px solid var(--retro-darkblue);
-                padding: 30px;
-                margin: 0 20px 20px 20px;
-            }
-
-            .partner-logo {
-                max-width: 250px;
-                height: auto;
-                display: block;
-                margin: 0 auto 20px auto;
-            }
-            
-        :root {
-        --retro-pink: #F77BB7;
-        --retro-teal: #68C1D3;
-        --retro-beige: #F1DFAE;
-        --retro-lightblue: #A1CCFF;
-        --retro-darkblue: #2C2E77;
-    }
 
     /* --- КОНТЕЈНЕР ЗА ПАПКАТА И ЈАЗИЧИЊАТА --- */
     .folder-wrapper {
@@ -854,9 +769,40 @@ body {
         text-align: center;
         background-color: transparent;
     }
+
+    /* --- ANNUAL PARTNERS folder layout: mobile fixes --- */
+    @media (max-width: 768px) {
+        .folder-wrapper {
+            margin: 1.5rem auto;
+            max-width: 100%;
+        }
+        .folder-tab-btn {
+            width: 60px;
+            height: 78px;
+        }
+        .folder-body {
+            padding: 18px;
+            min-height: 380px;
+        }
+        .folder-cover-design {
+            min-height: 300px;
+        }
+        .folder-cover-design h1 {
+            font-size: 2rem !important;
+        }
+        .folder-cover-design p,
+        .inner-retro-window .ithaca-font {
+            font-size: 1rem !important;
+        }
+        .inner-retro-window .ithaca-font.w-75 {
+            width: 100% !important;
+        }
+    }
+
     @font-face {
         font-family: 'Ithaca';
-        src: url('./fonts/Ithaca.ttf'); /* Името и патеката мора да се 100% точни */
+        src: url('./images/fonts/Ithaca.ttf') format('truetype');
+        font-display: swap;
     }
 
     /* ==========================================================================
@@ -927,10 +873,6 @@ body {
 
     .retro-nav-links > li > a:hover {
         color: white;
-    }
-
-    .dropdown-content a:hover {
-        color: var(--retro-pink);
     }
 
     .dropdown-toggle-btn {
@@ -1020,10 +962,18 @@ body {
         .retro-header {
             padding: 15px 20px;
             margin-bottom: 0;
+            justify-content: flex-start;
+            gap: 1rem;
         }
+
+        /* Group both logos on the left, push the hamburger to the right edge */
+        .logo-left { order: 1; }
+        .logo-right { order: 2; }
 
         .hamburger {
             display: flex;
+            order: 3;
+            margin-left: auto;
         }
 
         .cloud {
@@ -1038,22 +988,23 @@ body {
             display: flex !important;
             position: fixed;
             top: 0;
-            left: 0;
+            right: 0;
             height: 100vh;
             width: 260px;
+            max-width: 80vw;
             background-color: var(--retro-teal);
             flex-direction: column;
             padding: 20px 0 20px 0;
-            border-right: 4px solid var(--retro-darkblue);
+            border-left: 4px solid var(--retro-darkblue);
             box-shadow: none;
             z-index: 9;
-            transform: translateX(-100%);
+            transform: translateX(100%);
             transition: transform 0.3s ease;
         }
 
         .retro-nav.active {
             transform: translateX(0);
-            box-shadow: 4px 0px 0px var(--retro-pink);
+            box-shadow: -4px 0px 0px var(--retro-pink);
         }
 
         .retro-nav-links {
@@ -1120,9 +1071,11 @@ body {
    ========================================================================== */
 
 :root {
-	--lak-blue: #519bea;
-	--lak-cream: #fff4df;
-	--lak-navy: #15194d;
+	/* Footer palette aliases — sourced from the shared summer palette so the
+	   footer stays consistent with the header and the rest of the site. */
+	--lak-blue: var(--summer-blue);
+	--lak-cream: var(--summer-cream);
+	--lak-navy: var(--summer-dark-blue);
 }
 
 .lak-window {
@@ -1138,6 +1091,10 @@ body {
 
 .lak-titlebar {
 	background: var(--lak-blue);
+}
+
+.lak-titlebar-title {
+	color: var(--lak-navy);
 }
 
 .lak-close {
